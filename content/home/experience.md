@@ -38,7 +38,7 @@ date_format = "Jan 2006"
   company_url = ""
   location = "Olten"
   date_start = "2018-11-01"
-  date_end = "2019-11-31"
+  date_end = "2019-11-30"
   description = """Taught electronic engineering and researched semiconductor physics."""
 
 [[experience]]
