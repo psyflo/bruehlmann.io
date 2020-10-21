@@ -25,6 +25,12 @@ subtitle = ""
   icon_pack = "fas"
   name = "Statistics"
   description = "100%"  
+
+[[feature]]
+  icon = "js-square"
+  icon_pack = "fab"
+  name = "JavaScript"
+  description = "80%"  
   
 [[feature]]
   icon = "camera-retro"

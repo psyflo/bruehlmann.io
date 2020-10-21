@@ -75,6 +75,6 @@ user_groups:
 - Visitors
 ---
 
-Florian's research uses self-reported and behavioral data to examine how digital technologies affect users and how user's experiences with technology can be improved. He uses a mix of innovative, rigorous statistical methodology and qualitative research to shed new light on the challenge of understanding and quantifying user's experiences. He also advocates a broader introduction of Open Science and Reproducible Science.
+Florian's research uses self-reported and behavioral data to examine how digital technologies affect users and how users' experiences with technology can be improved. He uses a mix of innovative, rigorous statistical methodology and qualitative research to shed new light on the challenge of understanding and quantifying users' experiences. He also advocates a broader introduction of Open Science and Reproducible Science.
 
 Florian is a PostDoc and the Head of the Human-Computer Interaction research group (mmi-basel.ch) at the Faculty for Psychology, University of Basel. 
