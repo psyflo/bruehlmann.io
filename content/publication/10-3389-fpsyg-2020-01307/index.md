@@ -18,9 +18,9 @@ abstract: Player motivation is a key research area within games research, with t
   Arena game. Based on the motivational regulations posited by Self-Determination
   Theory and Latent Profile Analysis, we identify four distinct motivational profiles,
   which differ with regards to player experience and, to a lesser extent, in-game
-  behavior. While the more self-determined profiles “Intrinsic” and “Autonomous” report
+  behavior. While the more self-determined profiles Intrinsic and Autonomous report
   mainly positive experience-related outcomes, a considerable part of the player base
-  does not. Players of the “Amotivated” and “External” profile derive less enjoyment,
+  does not. Players of the \"Amotivated\" and \"External\" profile derive less enjoyment,
   experience more negative affect and tension, and score lower on vitality, indicating
   game engagement that is potentially detrimental to players' well-being. With regards
   to game metrics, minor differences in the rate of assists in unranked matches and
