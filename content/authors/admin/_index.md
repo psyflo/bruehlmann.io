@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Nelson Bighetti
+title: Florian Brühlmann
 
 # Username (this should match the folder name)
 authors:
@@ -10,20 +10,21 @@ authors:
 superuser: true
 
 # Role/position
-role: Professor of Artificial Intelligence
+role: Head of Human-Computer Interaction research group
 
 # Organizations/Affiliations
 organizations:
-- name: Stanford University
-  url: ""
+- name: University of Basel
+  url: "https://www.unibas.ch"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include distributed robotics, mobile computing and programmable matter.
+bio: My research interests include user experience, digial games, scale development, and data quality. 
 
 interests:
-- Artificial Intelligence
-- Computational Linguistics
-- Information Retrieval
+- Measuring the User Experience
+- Player Experience and Motivation
+- Scale Development
+- Data Quality and Crowdsourcing
 
 education:
   courses:
