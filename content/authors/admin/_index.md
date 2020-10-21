@@ -21,22 +21,23 @@ organizations:
 bio: My research interests include user experience, digial games, scale development, and data quality. 
 
 interests:
-- Measuring the User Experience
-- Player Experience and Motivation
+- Human-Computer Interaction
+- User Experience
+- Player Experience
 - Scale Development
-- Data Quality and Crowdsourcing
+- Methods & Open Science
 
 education:
   courses:
-  - course: PhD in Artificial Intelligence
-    institution: Stanford University
-    year: 2012
-  - course: MEng in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2009
-  - course: BSc in Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    year: 2008
+  - course: PhD in Cognitive Psychology / Human-Computer Interaction
+    institution: University of Basel
+    year: 2019
+  - course: MSc in Psychology
+    institution: University of Basel
+    year: 2015
+  - course: BSc in Psychology
+    institution: University of Basel
+    year: 2013
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
@@ -48,7 +49,7 @@ social:
   link: '#contact'  # For a direct email link, use "mailto:test@example.org".
 - icon: twitter
   icon_pack: fab
-  link: https://twitter.com/GeorgeCushen
+  link: https://twitter.com/fbruehlmann
 - icon: google-scholar
   icon_pack: ai
   link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
@@ -74,6 +75,6 @@ user_groups:
 - Visitors
 ---
 
-Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Florian's research uses self-reported and behavioral data to examine how digital technologies affect users and how user's experiences with technology can be improved. He uses a mix of innovative, rigorous statistical methodology and qualitative research to shed new light on the challenge of understanding and quantifying user's experiences. He also advocates a broader introduction of Open Science and Reproducible Science.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+Florian is a PostDoc and the Head of the Human-Computer Interaction research group (mmi-basel.ch) at the Faculty for Psychology, University of Basel. 
