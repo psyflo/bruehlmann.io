@@ -2,7 +2,7 @@
 title: 'Disassembling gamification: The effects of points and meaning on user motivation
   and performance'
 date: '2013-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.783253Z'
 authors:
 - Elisa D. Mekler

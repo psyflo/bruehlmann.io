@@ -2,7 +2,7 @@
 title: 'Do points, levels and leaderboards harm intrinsic motivation?: an empirical
   analysis of common gamification elements'
 date: '2013-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.829063Z'
 authors:
 - Elisa D. Mekler

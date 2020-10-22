@@ -2,7 +2,7 @@
 title: How to Measure the Game Experience? Analysis of the Factor Structure of Two
   Questionnaires
 date: '2015-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.737923Z'
 authors:
 - Florian Brühlmann

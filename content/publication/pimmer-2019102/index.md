@@ -1,7 +1,7 @@
 ---
 title: Facilitating professional mobile learning communities with instant messaging
 date: '2019-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.593717Z'
 authors:
 - Christoph Pimmer

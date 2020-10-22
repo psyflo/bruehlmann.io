@@ -1,7 +1,7 @@
 ---
 title: 'My Train Talks to Me: Participatory Design of a Mobile App for Travellers with Visual Impairments'
 date: '2020-09-04'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.645015Z'
 authors:
 - Beat Vollenwyder

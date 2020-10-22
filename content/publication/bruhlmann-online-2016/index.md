@@ -1,7 +1,7 @@
 ---
 title: 'Online Playtesting With Crowdsourcing: Advantages and Challenges'
 date: '2016-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:27.009434Z'
 authors:
 - Florian Brühlmann

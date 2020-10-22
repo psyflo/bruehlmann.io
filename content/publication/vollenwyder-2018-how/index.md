@@ -2,7 +2,7 @@
 title: How to Use Plain and Easy-to-Read Language for a Positive User Experience on
   Websites
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:27.322138Z'
 authors:
 - Beat Vollenwyder

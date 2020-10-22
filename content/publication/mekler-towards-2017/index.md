@@ -2,7 +2,7 @@
 title: Towards understanding the effects of individual gamification elements on intrinsic
   motivation and performance
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.962684Z'
 authors:
 - Elisa D. Mekler

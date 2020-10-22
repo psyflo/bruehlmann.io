@@ -1,7 +1,7 @@
 ---
 title: Salient beliefs influencing the intention to consider Web Accessibility
 date: '2019-03-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.645015Z'
 authors:
 - Beat Vollenwyder

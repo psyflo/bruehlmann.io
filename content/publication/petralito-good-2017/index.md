@@ -2,7 +2,7 @@
 title: 'A Good Reason to Die: How Avatar Death and High Challenges Enable Positive
   Experiences'
 date: '2017-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:27.187339Z'
 authors:
 - Serge Petralito

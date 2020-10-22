@@ -2,7 +2,7 @@
 title: Systematic Review and Validation of the Game Experience Questionnaire (GEQ)
   -- Implications for Citation and Reporting Practice
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.692397Z'
 authors:
 - Effie L-C Law

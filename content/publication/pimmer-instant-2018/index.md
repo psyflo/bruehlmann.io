@@ -1,7 +1,7 @@
 ---
 title: Instant messaging and nursing students' clinical learning experience
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:27.098097Z'
 authors:
 - C. Pimmer

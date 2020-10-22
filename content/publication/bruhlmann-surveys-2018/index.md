@@ -1,7 +1,7 @@
 ---
 title: Surveys in Games User Research
 date: '2018-01-01'
-draft: true
+draft: false
 publishDate: '2020-10-21T12:38:26.875060Z'
 authors:
 - Florian Brühlmann
