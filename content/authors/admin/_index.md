@@ -1,6 +1,6 @@
 ---
 # Display name
-title: Florian Brühlmann
+title: Florian Brühlmann, PhD
 
 # Username (this should match the folder name)
 authors:
@@ -10,7 +10,7 @@ authors:
 superuser: true
 
 # Role/position
-role: Head of Human-Computer Interaction research group
+role: UX researcher and data scientist. Head of the Human-Computer Interaction research group @ MMI Basel
 
 # Organizations/Affiliations
 organizations:
@@ -52,10 +52,16 @@ social:
   link: https://twitter.com/fbruehlmann
 - icon: google-scholar
   icon_pack: ai
-  link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+  link: https://scholar.google.com/citations?user=mQej0vsAAAAJ
+- icon: linkedin
+  icon_pack: fab
+  link: https://www.linkedin.com/in/fbruehlmann/
+- icon: researchgate
+  icon_pack: ai
+  link: https://www.researchgate.net/profile/Florian_Bruehlmann
 - icon: github
   icon_pack: fab
-  link: https://github.com/gcushen
+  link: https://github.com/psyflo
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # - icon: cv
@@ -75,6 +81,6 @@ user_groups:
 - Visitors
 ---
 
-Florian's research uses self-reported and behavioral data to examine how digital technologies affect users and how users' experiences with technology can be improved. He uses a mix of innovative, rigorous statistical methodology and qualitative research to shed new light on the challenge of understanding and quantifying users' experiences. He also advocates a broader introduction of Open Science and Reproducible Science.
+Florian's research uses self-reported and behavioral data to examine how digital technologies affect users and how users' experiences with technology can be improved. He uses a mix of innovative, rigorous statistical methodology and qualitative research to shed new light on the challenge of understanding and quantifying users' experiences. He also advocates a broader adoption of Open and Reproducible Science.
 
-Florian is a PostDoc and the Head of the Human-Computer Interaction research group (mmi-basel.ch) at the Faculty for Psychology, University of Basel. 
+Florian is a PostDoc and the Head of the Human-Computer Interaction research group ([mmi-basel.ch](https://mmi-basel.ch)) at the Faculty for Psychology, University of Basel. 
