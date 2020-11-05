@@ -18,7 +18,7 @@ organizations:
   url: "https://www.unibas.ch"
 
 # Short bio (displayed in user profile at end of posts)
-bio: My research interests include user experience, digial games, scale development, and data quality. 
+bio: My research interests include user experience, digital games, scale development, and data quality. 
 
 interests:
 - Human-Computer Interaction
@@ -38,6 +38,9 @@ education:
   - course: BSc in Psychology
     institution: University of Basel
     year: 2013
+  - course: Multimedia electronics technician
+    institution: Berufsschule Brugg
+    year: 2007
 
 # Social/Academic Networking
 # For available icons, see: https://sourcethemes.com/academic/docs/page-builder/#icons
