@@ -42,11 +42,11 @@ abstract: Although Mobile Instant Messaging (MIM) is a massive communication phe
 featured: false
 publication: '*Computers & Education*'
 tags:
-- '"Mobile learning"'
-- '"Instant messaging"'
-- '"School-to-work transition"'
-- '"Nursing education"'
-- '"WhatsApp"'
+- 'Mobile learning'
+- 'Instant messaging'
+- 'School-to-work transition'
+- 'Nursing education'
+- 'WhatsApp'
 doi: https://doi.org/10.1016/j.compedu.2018.09.005
 ---
 

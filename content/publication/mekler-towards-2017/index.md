@@ -29,9 +29,9 @@ abstract: Research on the effectiveness of gamification has proliferated over th
 featured: false
 publication: '*Computers in Human Behavior*'
 tags:
-- '"Gamification"'
-- '"Motivation"'
-- '"Self-determination theory"'
+- 'Gamification'
+- 'Motivation'
+- 'Self-determination theory'
 doi: 10.1016/j.chb.2015.08.048
 ---
 

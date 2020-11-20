@@ -11,7 +11,11 @@ abstract: 'In human-computer interaction, the trend towards gamification is part
 featured: false
 publication: 'Thesis'
 tags:
-- '"bachelor thesis"'
+- bachelor thesis
+- gamification
+- motivation
+- flow
+- Self-determination theory
 url_pdf: https://thesiscommons.org/6kauv/
 doi: 10.31237/osf.io/6kauv
 ---

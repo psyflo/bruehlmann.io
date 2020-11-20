@@ -27,6 +27,10 @@ abstract: It is heavily debated within the gamification community whether specif
 featured: false
 publication: '*Gamification 2013: Proceedings of the First International Conference
   on Gameful Design, Research, and Applications*'
+tags:
+- Gamification
+- Self-determination theory
+- Intrinsic Motivation
 doi: 10.1145/2583008.2583017
 ---
 

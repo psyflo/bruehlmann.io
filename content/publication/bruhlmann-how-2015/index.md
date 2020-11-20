@@ -22,10 +22,10 @@ featured: false
 publication: '*Proceedings of the 33rd Annual ACM Conference Extended Abstracts on
   Human Factors in Computing Systems*'
 tags:
-- '"digital games"'
-- '"factor analysis"'
-- '"game experience"'
-- '"questionnaire"'
+- digital games
+- factor analysis
+- game experience
+- questionnaire
 url_pdf: http://doi.acm.org/10.1145/2702613.2732831
 doi: 10.1145/2702613.2732831
 ---

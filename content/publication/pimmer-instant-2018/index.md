@@ -17,7 +17,7 @@ Approach and methods: To address this gap, the study, which was part of a multin
 Results: The findings suggest that students used WhatsApp relatively frequently and they perceived that this platform strongly enhanced their communication with other students and nurses. WhatsApp use during placements was positively associated with students' maintained social capital with peer students, the development of a professional identity, placement satisfaction and with reduced feelings of isolation from professional communities. The determinants that influenced WhatsApp use during placements were perceived usefulness and perceived ease of use. No associations were found between WhatsApp use during placement and age, attitude, subjective norms and placement duration.
 Conclusion: This study is one of the first of its kind that points to the relevance of mobile instant messaging as part of nursing students' (inter)personal learning environments in clinical settings and, particularly, in the development setting under investigation. Further research is needed to corroborate these findings, to enhance the understanding of the impact mechanisms, and to evaluate a more systematic use of MIM in clinical learning contexts."
 tags: 
-- Education, nursing
+- Nursing education
 - Instant messaging
 - Mobile learning
 - Personal learning environment
