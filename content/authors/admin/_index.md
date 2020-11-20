@@ -38,7 +38,7 @@ education:
   - course: BSc in Psychology
     institution: University of Basel
     year: 2013
-  - course: Multimedia electronics technician
+  - course: Multimedia electronics technician EFZ
     institution: Berufsschule Brugg
     year: 2007
 
