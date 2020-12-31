@@ -236,7 +236,7 @@ tags:
 - Registered Reports
 - open data
 - preregistered
-url_pdf: '  https://doi.org/10.1177/2515245920958687 '
+url_pdf: 'https://doi.org/10.1177/2515245920958687'
 doi: 10.1177/2515245920958687
 url_code: 'https://osf.io/7a6rd/'
 url_dataset: 'https://osf.io/7a6rd/'

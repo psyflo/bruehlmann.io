@@ -80,7 +80,7 @@ tags:
 - open data
 - open materials
 - preregistered
-url_pdf: '  https://doi.org/10.1177/2515245920917931 '
+url_pdf: 'https://doi.org/10.1177/2515245920917931'
 doi: 10.1177/2515245920917931
 url_code: 'https://osf.io/peuch/'
 url_dataset: 'https://osf.io/peuch/'

@@ -39,7 +39,7 @@ education:
     institution: University of Basel
     year: 2013
   - course: Multimedia electronics technician EFZ
-    institution: Berufsschule Brugg
+    institution: BWZ Brugg
     year: 2007
 
 # Social/Academic Networking
