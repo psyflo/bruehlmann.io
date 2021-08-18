@@ -4,6 +4,7 @@ title: How to Measure the Game Experience? Analysis of the Factor Structure of T
 date: '2015-01-01'
 draft: false
 publishDate: '2020-10-21T12:38:26.737923Z'
+projects: [measuring-ux]
 authors:
 - Florian Brühlmann
 - Gian-Marco Schmid

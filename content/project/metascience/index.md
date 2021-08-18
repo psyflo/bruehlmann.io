@@ -1,12 +1,12 @@
 ---
 # Documentation: https://wowchemy.com/docs/managing-content/
 
-title: "Explainable Human-Centered AI"
-summary: "Human-friendly explanations of artificial intelligence decisions and predictions"
+title: "Metascience"
+summary: "The science of science"
 authors: [admin]
 tags: []
 categories: []
-date: 2020-10-22T14:06:55+02:00
+date: 2021-08-18T11:06:07+02:00
 
 # Optional external URL for project (replaces project detail page).
 external_link: ""
@@ -39,4 +39,4 @@ url_video: ""
 #   Otherwise, set `slides = ""`.
 slides: ""
 ---
-Understanding users' needs to improve explanations given by black box systems. 
+An attempt to better understand HCI and Psychology as a science via research on cultural biases, transparency, and replication. 

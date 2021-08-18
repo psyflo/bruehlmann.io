@@ -4,6 +4,7 @@ title: 'Measuring user rated language quality: Development and validation of the
 date: '2016-01-01'
 draft: false
 publishDate: '2020-10-21T12:38:27.277801Z'
+projects: [measuring-ux]
 authors:
 - Javier A. Bargas-Avila
 - Florian Brühlmann
