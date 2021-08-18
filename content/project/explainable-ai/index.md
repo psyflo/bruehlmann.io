@@ -1,7 +1,7 @@
 ---
 # Documentation: https://wowchemy.com/docs/managing-content/
 
-title: "Explainable Human-Centered AI"
+title: "Human-Centered Explainable AI"
 summary: "Human-friendly explanations of artificial intelligence decisions and predictions"
 authors: [admin]
 tags: []

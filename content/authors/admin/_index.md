@@ -22,10 +22,11 @@ bio: My research interests include user experience, digital games, scale develop
 
 interests:
 - Human-Computer Interaction
-- User Experience
-- Player Experience
+- User and Player Experience
+- Explainable AI
 - Scale Development
 - Methods & Open Science
+- Metascience
 
 education:
   courses:
