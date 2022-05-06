@@ -1,3 +1,16 @@
+
+## How to update
+
+Make a Zip and upload:
+scp -r /Users/fbruehlmann/Downloads/public.zip root@62.113.204.185:/home/florian/public.zip
+
+Then on remote:
+unzip public.zip
+cp -rf public/* nginx-proxy/public
+
+
+
+
 <p align="center"><a href="https://wowchemy.com" target="_blank" rel="noopener"><img src="https://wowchemy.com/img/logo_200px.png" alt="Wowchemy Website Builder"></a></p>
 
 # Academic Template for [Hugo](https://github.com/gohugoio/hugo)
