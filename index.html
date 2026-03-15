@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Florian Brühlmann, PhD</title>
+<meta name="description" content="Florian Brühlmann – Data Insights Lead with a PhD in Human-Computer Interaction. Data science, BI, and AI strategy in life sciences.">
+<style>
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+a { color: #1d4ed8; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* === Header === */
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e5e7eb;
+  z-index: 100;
+}
+
+.header-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-name { font-weight: 700; font-size: 0.95rem; color: #111; }
+
+nav a {
+  margin-left: 1.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+nav a:hover { color: #1d4ed8; text-decoration: none; }
+
+/* === Main Layout === */
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+/* === About Section === */
+#about {
+  padding-top: 3.5rem;
+  padding-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 152px 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (max-width: 560px) {
+  #about { grid-template-columns: 1fr; }
+  .about-photo { margin: 0 auto; }
+  .interests, .social-links { justify-content: center; }
+}
+
+.about-photo {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e5e7eb;
+  display: block;
+}
+
+.about-text h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.15rem;
+  color: #111;
+}
+
+.role {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 0.6rem;
+}
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.85rem 0;
+}
+
+.interest-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.social-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  padding: 0.25rem 0.65rem;
+  border-radius: 5px;
+  transition: border-color 0.15s, color 0.15s;
+}
+.social-link:hover { border-color: #1d4ed8; color: #1d4ed8; text-decoration: none; }
+
+/* === Divider === */
+hr.divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
+
+/* === Publications === */
+#publications { padding-top: 2.5rem; }
+
+#publications > h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.35rem;
+  color: #111;
+}
+
+.pub-intro {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.year-group { margin-bottom: 2rem; }
+
+.year-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1d4ed8;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 0.25rem;
+}
+
+.pub {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+.pub:last-child { border-bottom: none; }
+
+.pub-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 0.2rem;
+  line-height: 1.4;
+}
+
+.pub-authors {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.15rem;
+}
+
+.pub-venue {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 0.35rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-left: 0.35rem;
+  font-style: normal;
+}
+.badge-award { background: #fef9c3; color: #854d0e; border: 1px solid #fde68a; }
+.badge-preprint { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+.badge-workshop { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+.pub-links {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.35rem;
+}
+
+.pub-btn {
+  font-size: 0.72rem;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  line-height: 1.4;
+  display: inline-block;
+}
+.pub-btn:hover { border-color: #1d4ed8; color: #1d4ed8; text-decoration: none; }
+.pub-btn.active { background: #eff6ff; border-color: #1d4ed8; color: #1d4ed8; }
+
+.bibtex-block {
+  display: none;
+  margin-top: 0.5rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  position: relative;
+}
+.bibtex-block.open { display: block; }
+
+.bibtex-block pre {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: #1e293b;
+  white-space: pre;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 0.68rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 3px;
+  background: #fff;
+  color: #64748b;
+  cursor: pointer;
+  font-family: inherit;
+}
+.copy-btn:hover { border-color: #1d4ed8; color: #1d4ed8; }
+
+/* === Pub Stats Bar === */
+.pub-stats {
+  font-size: 0.82rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+/* === Year Bar Chart === */
+.year-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.25rem;
+}
+.year-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+.year-bar-col:hover .year-label { color: #1d4ed8; }
+.year-bar-body {
+  width: 100%;
+  background: #bfdbfe;
+  border-radius: 3px 3px 0 0;
+  min-height: 3px;
+  transition: background 0.12s;
+}
+.year-bar-col:hover .year-bar-body { background: #93c5fd; }
+.year-label {
+  font-size: 0.6rem;
+  color: #9ca3af;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* === Topic Filter === */
+.topic-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+}
+.topic-pill {
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: inherit;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.15s;
+  line-height: 1.4;
+}
+.topic-pill:hover { border-color: #1d4ed8; color: #1d4ed8; }
+.topic-pill.active { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.pub.hidden { display: none; }
+.year-group.hidden { display: none; }
+
+/* === Contact === */
+#contact {
+  padding-top: 2.5rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 1rem;
+}
+#contact h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+  color: #111;
+}
+#contact p { font-size: 0.95rem; color: #374151; margin-bottom: 0.5rem; }
+
+/* === Footer === */
+footer {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: #9ca3af;
+  border-top: 1px solid #e5e7eb;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="site-name">Florian Brühlmann</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ====================================================
+       ABOUT
+       ==================================================== -->
+  <section id="about">
+    <img src="avatar.jpg" alt="Photo of Florian Brühlmann" class="about-photo">
+    <div class="about-text">
+      <h1>Florian Brühlmann</h1>
+      <p class="role">Data Science &amp; AI &middot; Human-Computer Interaction &middot; PhD</p>
+
+      <p>I turn data into decisions. With a PhD in Human-Computer Interaction and hands-on experience across data science, BI, and AI strategy, I help life sciences organizations cut through complexity — implementing systems that work for people and building analytics infrastructure that drives measurable business impact.</p>
+
+      <div class="interests">
+        <span class="interest-tag">Business Intelligence &amp; Analytics</span>
+        <span class="interest-tag">AI Strategy &amp; Implementation</span>
+        <span class="interest-tag">Data Science</span>
+        <span class="interest-tag">Human-Computer Interaction</span>
+        <span class="interest-tag">Methods &amp; Open Science</span>
+      </div>
+
+      <div class="social-links">
+        <a class="social-link" href="https://scholar.google.com/citations?user=mQej0vsAAAAJ" target="_blank">Google Scholar</a>
+        <a class="social-link" href="https://www.researchgate.net/profile/Florian_Bruehlmann" target="_blank">ResearchGate</a>
+        <a class="social-link" href="http://orcid.org/0000-0001-8945-3273" target="_blank">ORCID</a>
+        <a class="social-link" href="https://www.linkedin.com/in/fbruehlmann/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ====================================================
+       PUBLICATIONS
+       ==================================================== -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <p class="pub-stats">47 publications &middot; CHI &middot; FAccT &middot; Behavior Research Methods &middot; CHI PLAY &middot; IJHCS</p>
+    <div class="year-chart">
+      <div class="year-bar-col" data-year="2013" title="2013 · 3 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2013</div></div>
+      <div class="year-bar-col" data-year="2015" title="2015 · 1 publication"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2015</div></div>
+      <div class="year-bar-col" data-year="2016" title="2016 · 2 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2016</div></div>
+      <div class="year-bar-col" data-year="2017" title="2017 · 3 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2017</div></div>
+      <div class="year-bar-col" data-year="2018" title="2018 · 6 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2018</div></div>
+      <div class="year-bar-col" data-year="2019" title="2019 · 2 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2019</div></div>
+      <div class="year-bar-col" data-year="2020" title="2020 · 7 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2020</div></div>
+      <div class="year-bar-col" data-year="2021" title="2021 · 5 publications"><div class="year-bar-body" style="height:64px"></div><div class="year-label">2021</div></div>
+      <div class="year-bar-col" data-year="2022" title="2022 · 4 publications"><div class="year-bar-body" style="height:51px"></div><div class="year-label">2022</div></div>
+      <div class="year-bar-col" data-year="2023" title="2023 · 7 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2023</div></div>
+      <div class="year-bar-col" data-year="2024" title="2024 · 6 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2024</div></div>
+      <div class="year-bar-col" data-year="2025" title="2025 · 1 publication"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2025</div></div>
+    </div>
+
+    <div class="topic-filter" id="topicFilter">
+      <button class="topic-pill active" data-filter="all">All</button>
+      <button class="topic-pill" data-filter="ai-trust">AI &amp; Trust</button>
+      <button class="topic-pill" data-filter="gamification">Gamification &amp; Games</button>
+      <button class="topic-pill" data-filter="ux">UX &amp; Aesthetics</button>
+      <button class="topic-pill" data-filter="accessibility">Accessibility</button>
+      <button class="topic-pill" data-filter="methods">Methods &amp; Open Science</button>
+      <button class="topic-pill" data-filter="mobile-learning">Mobile Learning</button>
+    </div>
+
+    <!-- ── 2025 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2025</div>
+
+      <div class="pub">
+        <div class="pub-title">To trust or distrust AI: a questionnaire validation study</div>
+        <div class="pub-authors">Scharowski, N., Perrig, S. A. C., von Felten, N., Aeschbach, L. F., Opwis, K., Wintersberger, P., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT), pp. 361–374</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3715275.3732025" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{scharowski2025trust,
+  title     = {To trust or distrust AI: a questionnaire validation study},
+  author    = {Scharowski, Nicolas and Perrig, Sebastian AC and von Felten, Nick and
+               Aeschbach, Lena Fanya and Opwis, Klaus and Wintersberger, Philipp and
+               Br{\"u}hlmann, Florian},
+  booktitle = {Proceedings of the 2025 ACM Conference on Fairness, Accountability,
+               and Transparency},
+  pages     = {361--374},
+  doi       = {10.1145/3715275.3732025},
+  year      = {2025}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2024 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2024</div>
+
+      <div class="pub">
+        <div class="pub-title">Bringing video browsing to virtual reality: Empirical evaluation of a novel multimedia drawer</div>
+        <div class="pub-authors">Spiess, F., Scharowski, N., Haller, A., Memeti, Z., Schuldt, H., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Proceedings of the 2024 International Conference on Multimedia Retrieval (ICMR), pp. 293–301</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3652583.3658077" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{spiess2024bringing,
+  title     = {Bringing video browsing to virtual reality: Empirical evaluation of
+               a novel multimedia drawer},
+  author    = {Spiess, Florian and Scharowski, Nicolas and Haller, Ariane and
+               Memeti, Zgjim and Schuldt, Heiko and Br{\"u}hlmann, Florian},
+  booktitle = {Proceedings of the 2024 International Conference on Multimedia Retrieval},
+  pages     = {293--301},
+  doi       = {10.1145/3652583.3658077},
+  year      = {2024}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Development and validation of a positive-item version of the visual aesthetics of websites inventory: The VisAWI-pos</div>
+        <div class="pub-authors">Perrig, S. A. C., von Felten, N., Honda, M., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">International Journal of Human–Computer Interaction, 40(20), 6622–6646</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1080/10447318.2023.2258634" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{perrig2024development,
+  title   = {Development and validation of a positive-item version of the visual
+             aesthetics of websites inventory: The visawi-pos},
+  author  = {Perrig, Sebastian AC and von Felten, Nick and Honda, Marimo and
+             Opwis, Klaus and Br{\"u}hlmann, Florian},
+  journal = {International Journal of Human--Computer Interaction},
+  volume  = {40},
+  number  = {20},
+  pages   = {6622--6646},
+  doi     = {10.1080/10447318.2023.2258634},
+  year    = {2024}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Measurement practices in user experience (UX) research: a systematic quantitative literature review</div>
+        <div class="pub-authors">Perrig, S. A. C., Aeschbach, L. F., Scharowski, N., von Felten, N., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Frontiers in Computer Science, 6, 1368860</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3389/fcomp.2024.1368860" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{perrig2024measurement,
+  title   = {Measurement practices in user experience ({UX}) research: a systematic
+             quantitative literature review},
+  author  = {Perrig, Sebastian AC and Aeschbach, Lena Fanya and Scharowski, Nicolas and
+             von Felten, Nick and Opwis, Klaus and Br{\"u}hlmann, Florian},
+  journal = {Frontiers in Computer Science},
+  volume  = {6},
+  pages   = {1368860},
+  doi     = {10.3389/fcomp.2024.1368860},
+  year    = {2024}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">To trust or distrust trust measures: Validating questionnaires for trust in AI <span class="badge badge-preprint">Preprint</span></div>
+        <div class="pub-authors">Scharowski, N., Perrig, S. A. C., Aeschbach, L. F., von Felten, N., Opwis, K., Wintersberger, P., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">arXiv preprint arXiv:2403.00582</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://arxiv.org/abs/2403.00582" target="_blank">arXiv ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{scharowski2024trust,
+  title   = {To trust or distrust trust measures: Validating questionnaires for trust in AI},
+  author  = {Scharowski, Nicolas and Perrig, Sebastian AC and Aeschbach, Lena Fanya and
+             von Felten, Nick and Opwis, Klaus and Wintersberger, Philipp and
+             Br{\"u}hlmann, Florian},
+  journal = {arXiv preprint arXiv:2403.00582},
+  year    = {2024}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">The effectiveness of warning statements in reducing careless responding in crowdsourced online surveys</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Memeti, Z., Aeschbach, L. F., Perrig, S. A. C., &amp; Opwis, K.</div>
+        <div class="pub-venue">Behavior Research Methods, 56(6), 5862–5875</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3758/s13428-023-02321-z" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bruhlmann2024effectiveness,
+  title   = {The effectiveness of warning statements in reducing careless
+             responding in crowdsourced online surveys},
+  author  = {Br{\"u}hlmann, Florian and Memeti, Zgjim and Aeschbach, Lena F. and
+             Perrig, Sebastian AC and Opwis, Klaus},
+  journal = {Behavior Research Methods},
+  volume  = {56},
+  number  = {6},
+  pages   = {5862--5875},
+  doi     = {10.3758/s13428-023-02321-z},
+  year    = {2024}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Independent validation of the player experience inventory: Findings from a large set of video game players</div>
+        <div class="pub-authors">Perrig, S. A. C., Scharowski, N., <strong>Brühlmann, F.</strong>, von Felten, N., Opwis, K., &amp; Aeschbach, L. F.</div>
+        <div class="pub-venue">Proceedings of the 2024 CHI Conference on Human Factors in Computing Systems, pp. 1–13</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{perrig2024independent,
+  title     = {Independent validation of the player experience inventory:
+               Findings from a large set of video game players},
+  author    = {Perrig, Sebastian AC and Scharowski, Nicolas and Br{\"u}hlmann, Florian and
+               von Felten, Nick and Opwis, Klaus and Aeschbach, Lena Fanya},
+  booktitle = {Proceedings of the 2024 CHI Conference on Human Factors in
+               Computing Systems},
+  pages     = {1--13},
+  year      = {2024}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2023 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2023</div>
+
+      <div class="pub">
+        <div class="pub-title">Certification labels for trustworthy AI: Insights from an empirical mixed-method study</div>
+        <div class="pub-authors">Scharowski, N., Benk, M., Kühne, S. J., Wettstein, L., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency (FAccT), pp. 248–260</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3593013.3593994" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{scharowski2023certification,
+  title     = {Certification labels for trustworthy {AI}: Insights from an empirical
+               mixed-method study},
+  author    = {Scharowski, Nicolas and Benk, Michaela and K{\"u}hne, Swen J and
+               Wettstein, L{\'e}ane and Br{\"u}hlmann, Florian},
+  booktitle = {Proceedings of the 2023 ACM Conference on Fairness, Accountability,
+               and Transparency},
+  pages     = {248--260},
+  doi       = {10.1145/3593013.3593994},
+  year      = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Exploring the effects of human-centered AI explanations on trust and reliance</div>
+        <div class="pub-authors">Scharowski, N., Perrig, S. A. C., Svab, M., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Frontiers in Computer Science, 5, 1151150</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3389/fcomp.2023.1151150" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{scharowski2023exploring,
+  title   = {Exploring the effects of human-centered {AI} explanations on trust and reliance},
+  author  = {Scharowski, Nicolas and Perrig, Sebastian AC and Svab, Melanie and
+             Opwis, Klaus and Br{\"u}hlmann, Florian},
+  journal = {Frontiers in Computer Science},
+  volume  = {5},
+  pages   = {1151150},
+  doi     = {10.3389/fcomp.2023.1151150},
+  year    = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Smartphone app aesthetics influence users' experience and performance</div>
+        <div class="pub-authors">Perrig, S. A. C., Ueffing, D., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Frontiers in Psychology, 14, 1113842</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3389/fpsyg.2023.1113842" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{perrig2023smartphone,
+  title   = {Smartphone app aesthetics influence users' experience and performance},
+  author  = {Perrig, Sebastian AC and Ueffing, David and Opwis, Klaus and
+             Br{\"u}hlmann, Florian},
+  journal = {Frontiers in Psychology},
+  volume  = {14},
+  pages   = {1113842},
+  doi     = {10.3389/fpsyg.2023.1113842},
+  year    = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">The psychology of esports players' ELO Hell: Motivated bias in League of Legends and its impact on players' overestimation of skill</div>
+        <div class="pub-authors">Aeschbach, L. F., Kayser, D., Hüsler, A. B. D. C., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Computers in Human Behavior, 147, 107828</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.chb.2023.107828" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{aeschbach2023psychology,
+  title   = {The psychology of esports players' {ELO} Hell: Motivated bias in
+             {League of Legends} and its impact on players' overestimation of skill},
+  author  = {Aeschbach, Lena Fanya and Kayser, Dominik and
+             H{\"u}sler, Antony Berbert De Castro and Opwis, Klaus and
+             Br{\"u}hlmann, Florian},
+  journal = {Computers in Human Behavior},
+  volume  = {147},
+  pages   = {107828},
+  doi     = {10.1016/j.chb.2023.107828},
+  year    = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Is a Mean Difference of 0.46 Relevant? Towards Determining the Smallest Effect Size of Interest for Visual Aesthetics of Websites <span class="badge badge-preprint">Preprint</span></div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">arXiv preprint arXiv:2305.08945</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://arxiv.org/abs/2305.08945" target="_blank">arXiv ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bruhlmann2023mean,
+  title   = {Is a Mean Difference of 0.46 Relevant? Towards Determining the Smallest
+             Effect Size of Interest for Visual Aesthetics of Websites},
+  author  = {Br{\"u}hlmann, Florian},
+  journal = {arXiv preprint arXiv:2305.08945},
+  year    = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Trust issues with trust scales: examining the psychometric quality of trust measures in the context of AI</div>
+        <div class="pub-authors">Perrig, S. A. C., Scharowski, N., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Extended Abstracts of the 2023 CHI Conference on Human Factors in Computing Systems, pp. 1–7</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3544549.3585808" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{perrig2023trust,
+  title     = {Trust issues with trust scales: examining the psychometric quality of
+               trust measures in the context of {AI}},
+  author    = {Perrig, Sebastian AC and Scharowski, Nicolas and Br{\"u}hlmann, Florian},
+  booktitle = {Extended Abstracts of the 2023 CHI Conference on Human Factors in
+               Computing Systems},
+  pages     = {1--7},
+  doi       = {10.1145/3544549.3585808},
+  year      = {2023}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">How compliance with web accessibility standards shapes the experiences of users with and without disabilities</div>
+        <div class="pub-authors">Vollenwyder, B., Petralito, S., Iten, G. H., <strong>Brühlmann, F.</strong>, Opwis, K., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">International Journal of Human-Computer Studies, 170, 102956</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.ijhcs.2022.102956" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{vollenwyder2023compliance,
+  title   = {How compliance with web accessibility standards shapes the experiences
+             of users with and without disabilities},
+  author  = {Vollenwyder, Beat and Petralito, Serge and Iten, Glena H and
+             Br{\"u}hlmann, Florian and Opwis, Klaus and Mekler, Elisa D},
+  journal = {International Journal of Human-Computer Studies},
+  volume  = {170},
+  pages   = {102956},
+  doi     = {10.1016/j.ijhcs.2022.102956},
+  year    = {2023}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2022 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2022</div>
+
+      <div class="pub">
+        <div class="pub-title">Trust and Reliance in XAI – Distinguishing Between Attitudinal and Behavioral Measures <span class="badge badge-workshop">Workshop</span></div>
+        <div class="pub-authors">Scharowski, N., Perrig, S. A. C., von Felten, N., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">CHI 2022 Workshop on Trust and Reliance in AI-Human Teams (TRAIT)</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://arxiv.org/abs/2203.12318" target="_blank">arXiv ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{scharowski2022trust,
+  title     = {Trust and Reliance in {XAI} -- Distinguishing Between Attitudinal
+               and Behavioral Measures},
+  author    = {Scharowski, Nicolas and Perrig, Sebastian AC and von Felten, Nick and
+               Br{\"u}hlmann, Florian},
+  booktitle = {CHI 2022 Workshop on Trust and Reliance in AI-Human Teams (TRAIT)},
+  url       = {https://arxiv.org/abs/2203.12318},
+  year      = {2022}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Breaking immersion: A theoretical framework of alienated play to facilitate critical reflection on interactive media</div>
+        <div class="pub-authors">Aeschbach, L. F., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Frontiers in Virtual Reality, 3, 846490</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3389/frvir.2022.846490" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{aeschbach2022breaking,
+  title   = {Breaking immersion: A theoretical framework of alienated play to
+             facilitate critical reflection on interactive media},
+  author  = {Aeschbach, Lena Fanya and Opwis, Klaus and Br{\"u}hlmann, Florian},
+  journal = {Frontiers in Virtual Reality},
+  volume  = {3},
+  pages   = {846490},
+  doi     = {10.3389/frvir.2022.846490},
+  year    = {2022}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">LoL, Why do you even play? Validating the motives for online gaming questionnaire in the context of League of Legends</div>
+        <div class="pub-authors">Memeti, Z., <strong>Brühlmann, F.</strong>, &amp; Perrig, S. A. C.</div>
+        <div class="pub-venue">Extended Abstracts of the 2022 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY EA '22), pp. 81–86</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{memeti2022lol,
+  title     = {LoL, Why do you even play? Validating the motives for online gaming
+               questionnaire in the context of {League of Legends}},
+  author    = {Memeti, Zgjim and Br{\"u}hlmann, Florian and Perrig, Sebastian AC},
+  booktitle = {Extended Abstracts of the 2022 Annual Symposium on Computer-Human
+               Interaction in Play},
+  pages     = {81--86},
+  year      = {2022}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Independent validation of the video game dispositional flow scale with League of Legends players</div>
+        <div class="pub-authors">von Felten, N., <strong>Brühlmann, F.</strong>, &amp; Perrig, S. A. C.</div>
+        <div class="pub-venue">Extended Abstracts of the 2022 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY EA '22), pp. 44–50</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{von2022independent,
+  title     = {Independent validation of the video game dispositional flow scale
+               with {League of Legends} players},
+  author    = {von Felten, Nick and Br{\"u}hlmann, Florian and Perrig, Sebastian AC},
+  booktitle = {Extended Abstracts of the 2022 Annual Symposium on Computer-Human
+               Interaction in Play},
+  pages     = {44--50},
+  year      = {2022}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2021 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2021</div>
+
+      <div class="pub">
+        <div class="pub-title">Transparency in Measurement Reporting: A Systematic Literature Review of CHI PLAY <span class="badge badge-award">Honorable Mention</span></div>
+        <div class="pub-authors">Aeschbach, L. F., Perrig, S. A. C., Weder, L., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Proceedings of the ACM on Human-Computer Interaction (CHI PLAY), 5</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3474660" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/4xz2v/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{aeschbach2021transparency,
+  title   = {Transparency in Measurement Reporting: A Systematic Literature Review of
+             {CHI PLAY}},
+  author  = {Aeschbach, Lena Fanya and Perrig, Sebastian AC and Weder, Lorena and
+             Opwis, Klaus and Br{\"u}hlmann, Florian},
+  journal = {Proceedings of the ACM on Human-Computer Interaction},
+  volume  = {5},
+  number  = {CHI PLAY},
+  doi     = {10.1145/3474660},
+  year    = {2021}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Measuring Players' Experience of Need Satisfaction in Digital Games: An Analysis of the Factor Structure of the UPEQ</div>
+        <div class="pub-authors">Kayser, D., Perrig, S. A. C., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Extended Abstracts of the 2021 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY EA '21)</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3450337.3483499" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/6nhts/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{kayser2021measuring,
+  title     = {Measuring Players' Experience of Need Satisfaction in Digital Games:
+               An Analysis of the Factor Structure of the {UPEQ}},
+  author    = {Kayser, Dominik and Perrig, Sebastian AC and Br{\"u}hlmann, Florian},
+  booktitle = {Extended Abstracts of the 2021 Annual Symposium on Computer-Human
+               Interaction in Play},
+  doi       = {10.1145/3450337.3483499},
+  year      = {2021}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">How WEIRD is CHI?</div>
+        <div class="pub-authors">Linxen, S., Sturm, C., <strong>Brühlmann, F.</strong>, Cassau, V., Opwis, K., &amp; Reinecke, K.</div>
+        <div class="pub-venue">Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3411764.3445488" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{linxen2021weird,
+  title     = {How {WEIRD} is {CHI}?},
+  author    = {Linxen, Sebastian and Sturm, Christian and Br{\"u}hlmann, Florian and
+               Cassau, Vincent and Opwis, Klaus and Reinecke, Katharina},
+  booktitle = {Proceedings of the 2021 CHI Conference on Human Factors in Computing Systems},
+  doi       = {10.1145/3411764.3445488},
+  year      = {2021}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">WhatsApp for mobile learning: Effects on knowledge, resilience and isolation in the school-to-work transition</div>
+        <div class="pub-authors">Pimmer, C., <strong>Brühlmann, F.</strong>, Odetola, T. D., Dipeolu, O., Oluwasola, O., Jäger, J., &amp; Ajuwon, A. J.</div>
+        <div class="pub-venue">The Internet and Higher Education, 50, 100809</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.iheduc.2021.100809" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{pimmer2021whatsapp,
+  title   = {{WhatsApp} for mobile learning: Effects on knowledge, resilience and
+             isolation in the school-to-work transition},
+  author  = {Pimmer, Christoph and Br{\"u}hlmann, Florian and Odetola, Titilayo Dorothy and
+             Dipeolu, Oluwafemi and Oluwasola, Olusola and J{\"a}ger, Janine and
+             Ajuwon, Ademola J.},
+  journal = {The Internet and Higher Education},
+  volume  = {50},
+  pages   = {100809},
+  doi     = {10.1016/j.iheduc.2021.100809},
+  year    = {2021}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Empirical Hints of Cognitive Biases Despite Human-Centered AI Explanations <span class="badge badge-workshop">Workshop</span></div>
+        <div class="pub-authors">Scharowski, N., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">CHI 2021 Workshop: Operationalizing Human-Centered Perspectives in Explainable AI (HCXAI)</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{scharowski2021empirical,
+  title     = {Empirical Hints of Cognitive Biases Despite Human-Centered {AI} Explanations},
+  author    = {Scharowski, Nicolas and Opwis, Klaus and Br{\"u}hlmann, Florian},
+  booktitle = {CHI 2021 Workshop: Operationalizing Human-Centered Perspectives in
+               Explainable AI (HCXAI)},
+  year      = {2021}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2020 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2020</div>
+
+      <div class="pub">
+        <div class="pub-title">Motivational Profiling of League of Legends Players</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Baumgartner, P., Wallner, G., Kriglstein, S., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Frontiers in Psychology, 11, 1307</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.3389/fpsyg.2020.01307" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/ue82s/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bruehlmann2020motivational,
+  title   = {Motivational Profiling of League of Legends Players},
+  author  = {Br{\"u}hlmann, Florian and Baumgartner, Philipp and Wallner, G{\"u}nter and
+             Kriglstein, Simone and Mekler, Elisa D.},
+  journal = {Frontiers in Psychology},
+  volume  = {11},
+  pages   = {1307},
+  doi     = {10.3389/fpsyg.2020.01307},
+  year    = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">The quality of data collected online: An investigation of careless responding in a crowdsourced sample</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Petralito, S., Aeschbach, L. F., &amp; Opwis, K.</div>
+        <div class="pub-venue">Methods in Psychology, 2, 100022</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.metip.2020.100022" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/9vjur/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bruhlmann2020quality,
+  title   = {The quality of data collected online: An investigation of careless
+             responding in a crowdsourced sample},
+  author  = {Br{\"u}hlmann, Florian and Petralito, Serge and Aeschbach, Lena F. and
+             Opwis, Klaus},
+  journal = {Methods in Psychology},
+  volume  = {2},
+  pages   = {100022},
+  doi     = {10.1016/j.metip.2020.100022},
+  year    = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">TrustDiff: Development and Validation of a Semantic Differential for User Trust on the Web</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Petralito, S., Rieser, D. C., Aeschbach, L. F., &amp; Opwis, K.</div>
+        <div class="pub-venue">Journal of Usability Studies, 16(1), 29–48</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bruhlmann2020trustdiff,
+  title   = {{TrustDiff}: Development and Validation of a Semantic Differential for
+             User Trust on the Web},
+  author  = {Br{\"u}hlmann, Florian and Petralito, Serge and Rieser, Denise C. and
+             Aeschbach, Lena F. and Opwis, Klaus},
+  journal = {Journal of Usability Studies},
+  volume  = {16},
+  number  = {1},
+  pages   = {29--48},
+  year    = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Many Labs 5: Registered Replication of Vohs and Schooler (2008), Experiment 1</div>
+        <div class="pub-authors">Buttrick, N. R., Aczel, B., Aeschbach, L. F., Bakos, B. E., <strong>Brühlmann, F.</strong>, &amp; others</div>
+        <div class="pub-venue">Advances in Methods and Practices in Psychological Science, 3(3), 429–438</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1177/2515245920917931" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/peuch/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{buttrick2020manylabs5a,
+  title   = {Many Labs 5: Registered Replication of {Vohs} and {Schooler} (2008),
+             Experiment 1},
+  author  = {Buttrick, Nicholas R. and Aczel, Balazs and Aeschbach, Lena F. and
+             Bakos, Bence E. and Br{\"u}hlmann, Florian and others},
+  journal = {Advances in Methods and Practices in Psychological Science},
+  volume  = {3},
+  number  = {3},
+  pages   = {429--438},
+  doi     = {10.1177/2515245920917931},
+  year    = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Many Labs 5: Testing Pre-Data-Collection Peer Review as an Intervention to Increase Replicability</div>
+        <div class="pub-authors">Ebersole, C. R., Mathur, M. B., <strong>Brühlmann, F.</strong>, &amp; others</div>
+        <div class="pub-venue">Advances in Methods and Practices in Psychological Science, 3(3), 309–331</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1177/2515245920958687" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/7a6rd/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{ebersole2020manylabs5b,
+  title   = {Many Labs 5: Testing Pre-Data-Collection Peer Review as an Intervention
+             to Increase Replicability},
+  author  = {Ebersole, Charles R. and Mathur, Maya B. and Br{\"u}hlmann, Florian and others},
+  journal = {Advances in Methods and Practices in Psychological Science},
+  volume  = {3},
+  number  = {3},
+  pages   = {309--331},
+  doi     = {10.1177/2515245920958687},
+  year    = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">My Train Talks to Me: Participatory Design of a Mobile App for Travellers with Visual Impairments</div>
+        <div class="pub-authors">Vollenwyder, B., Buchmüller, E., Trachsel, C., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Computers Helping People with Special Needs (ICCHP 2020), pp. 10–18</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1007/978-3-030-58796-3_2" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{vollenwyder2020train,
+  title     = {My Train Talks to Me: Participatory Design of a Mobile App for
+               Travellers with Visual Impairments},
+  author    = {Vollenwyder, Beat and Buchm{\"u}ller, Esther and Trachsel, Christian and
+               Opwis, Klaus and Br{\"u}hlmann, Florian},
+  booktitle = {Computers Helping People with Special Needs (ICCHP 2020)},
+  pages     = {10--18},
+  doi       = {10.1007/978-3-030-58796-3_2},
+  year      = {2020}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">How Web Professionals Perceive Web Accessibility in Practice: Active Roles, Process Phases and Key Disabilities</div>
+        <div class="pub-authors">Vollenwyder, B., Opwis, K., &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Computers Helping People with Special Needs (ICCHP 2020), pp. 294–302</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1007/978-3-030-58796-3_35" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{vollenwyder2020webprofessionals,
+  title     = {How Web Professionals Perceive Web Accessibility in Practice:
+               Active Roles, Process Phases and Key Disabilities},
+  author    = {Vollenwyder, Beat and Opwis, Klaus and Br{\"u}hlmann, Florian},
+  booktitle = {Computers Helping People with Special Needs (ICCHP 2020)},
+  pages     = {294--302},
+  doi       = {10.1007/978-3-030-58796-3_35},
+  year      = {2020}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2019 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2019</div>
+
+      <div class="pub">
+        <div class="pub-title">Facilitating professional mobile learning communities with instant messaging</div>
+        <div class="pub-authors">Pimmer, C., <strong>Brühlmann, F.</strong>, Odetola, T. D., Oluwasola, D. O., Dipeolu, O., &amp; Ajuwon, A. J.</div>
+        <div class="pub-venue">Computers &amp; Education, 128, 102–112</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.compedu.2018.09.005" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{pimmer2019facilitating,
+  title   = {Facilitating professional mobile learning communities with instant messaging},
+  author  = {Pimmer, Christoph and Br{\"u}hlmann, Florian and Odetola, Titilayo Dorothy and
+             Oluwasola, Deborah Olusola and Dipeolu, Oluwafemi and Ajuwon, Ademola J.},
+  journal = {Computers \& Education},
+  volume  = {128},
+  pages   = {102--112},
+  doi     = {10.1016/j.compedu.2018.09.005},
+  year    = {2019}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Salient beliefs influencing the intention to consider Web Accessibility</div>
+        <div class="pub-authors">Vollenwyder, B., Iten, G. H., <strong>Brühlmann, F.</strong>, Opwis, K., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Computers in Human Behavior, 92, 352–360</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.chb.2018.11.016" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{vollenwyder2019salient,
+  title   = {Salient beliefs influencing the intention to consider {Web Accessibility}},
+  author  = {Vollenwyder, Beat and Iten, Glena H. and Br{\"u}hlmann, Florian and
+             Opwis, Klaus and Mekler, Elisa D.},
+  journal = {Computers in Human Behavior},
+  volume  = {92},
+  pages   = {352--360},
+  doi     = {10.1016/j.chb.2018.11.016},
+  year    = {2019}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2018 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2018</div>
+
+      <div class="pub">
+        <div class="pub-title">Measuring the "Why" of Interaction: Development and Validation of the User Motivation Inventory (UMI)</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Vollenwyder, B., Opwis, K., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems, pp. 1–13</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3173574.3173680" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/m3fbk/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{bruhlmann2018umi,
+  title     = {Measuring the ``{Why}'' of Interaction: Development and Validation of
+               the User Motivation Inventory ({UMI})},
+  author    = {Br{\"u}hlmann, Florian and Vollenwyder, Beat and Opwis, Klaus and
+               Mekler, Elisa D.},
+  booktitle = {Proceedings of the 2018 CHI Conference on Human Factors in Computing Systems},
+  pages     = {1--13},
+  doi       = {10.1145/3173574.3173680},
+  year      = {2018}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Systematic Review and Validation of the Game Experience Questionnaire (GEQ) – Implications for Citation and Reporting Practice</div>
+        <div class="pub-authors">Law, E. L-C., <strong>Brühlmann, F.</strong>, &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Proceedings of the 2018 Annual Symposium on Computer-Human Interaction in Play (CHI PLAY '18), pp. 257–270</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3242671.3242683" target="_blank">DOI ↗</a>
+          <a class="pub-btn" href="https://osf.io/2kw4g/" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{law2018geq,
+  title     = {Systematic Review and Validation of the Game Experience Questionnaire
+               ({GEQ}) -- Implications for Citation and Reporting Practice},
+  author    = {Law, Effie L-C and Br{\"u}hlmann, Florian and Mekler, Elisa D.},
+  booktitle = {Proceedings of the 2018 Annual Symposium on Computer-Human Interaction
+               in Play (CHI PLAY '18)},
+  pages     = {257--270},
+  doi       = {10.1145/3242671.3242683},
+  year      = {2018}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Instant messaging and nursing students' clinical learning experience</div>
+        <div class="pub-authors">Pimmer, C., <strong>Brühlmann, F.</strong>, Odetola, T. D., Dipeolu, O., Gröhbiel, U., &amp; Ajuwon, A. J.</div>
+        <div class="pub-venue">Nurse Education Today, 64, 119–124</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.nedt.2018.01.034" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{pimmer2018nursing,
+  title   = {Instant messaging and nursing students' clinical learning experience},
+  author  = {Pimmer, C. and Br{\"u}hlmann, Florian and Odetola, T. D. and Dipeolu, O. and
+             Gr{\"o}hbiel, U. and Ajuwon, A. J.},
+  journal = {Nurse Education Today},
+  volume  = {64},
+  pages   = {119--124},
+  doi     = {10.1016/j.nedt.2018.01.034},
+  year    = {2018}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Surveys in Games User Research</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong> &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Games User Research (eds. Drachen, A., Mirza-Babaei, P., Nacke, L.), Chapter 9, pp. 141–162. Oxford University Press</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@incollection{bruhlmann2018surveys,
+  title     = {Surveys in Games User Research},
+  author    = {Br{\"u}hlmann, Florian and Mekler, Elisa D.},
+  booktitle = {Games User Research},
+  chapter   = {9},
+  pages     = {141--162},
+  publisher = {Oxford University Press},
+  year      = {2018}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">How to Use Plain and Easy-to-Read Language for a Positive User Experience on Websites</div>
+        <div class="pub-authors">Vollenwyder, B., Schneider, A., Krueger, E., <strong>Brühlmann, F.</strong>, Opwis, K., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">Computers Helping People with Special Needs (ICCHP 2018), pp. 514–522</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1007/978-3-319-94277-3_80" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{vollenwyder2018plain,
+  title     = {How to Use Plain and Easy-to-Read Language for a Positive User
+               Experience on Websites},
+  author    = {Vollenwyder, Beat and Schneider, Andrea and Krueger, Eva and
+               Br{\"u}hlmann, Florian and Opwis, Klaus and Mekler, Elisa D.},
+  booktitle = {Computers Helping People with Special Needs (ICCHP 2018)},
+  pages     = {514--522},
+  doi       = {10.1007/978-3-319-94277-3_80},
+  year      = {2018}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Understanding and improving subjective measures in human-computer interaction</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">PhD Thesis, University of Basel</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@phdthesis{bruhlmann2018understanding,
+  title  = {Understanding and improving subjective measures in
+            human-computer interaction},
+  author = {Br{\"u}hlmann, Florian},
+  school = {University of Basel},
+  year   = {2018}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2017 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2017</div>
+
+      <div class="pub">
+        <div class="pub-title">The Effects of Framing in Gamification: A Study of Failure</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">BestMasters. Springer Wiesbaden, XIII, 68 pp.</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1007/978-3-658-16926-8" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@book{bruhlmann2017framing,
+  title     = {The Effects of Framing in Gamification: A Study of Failure},
+  author    = {Br{\"u}hlmann, Florian},
+  series    = {BestMasters},
+  publisher = {Springer Wiesbaden},
+  isbn      = {978-3-658-16926-8},
+  doi       = {10.1007/978-3-658-16926-8},
+  year      = {2017}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">A Good Reason to Die: How Avatar Death and High Challenges Enable Positive Experiences <span class="badge badge-award">Honorable Mention</span></div>
+        <div class="pub-authors">Petralito, S., <strong>Brühlmann, F.</strong>, Iten, G., Mekler, E. D., &amp; Opwis, K.</div>
+        <div class="pub-venue">Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/3025453.3026047" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{petralito2017death,
+  title     = {A Good Reason to Die: How Avatar Death and High Challenges Enable
+               Positive Experiences},
+  author    = {Petralito, Serge and Br{\"u}hlmann, Florian and Iten, Glena and
+               Mekler, Elisa D. and Opwis, Klaus},
+  booktitle = {Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems},
+  doi       = {10.1145/3025453.3026047},
+  note      = {Honorable Mention},
+  year      = {2017}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Towards understanding the effects of individual gamification elements on intrinsic motivation and performance</div>
+        <div class="pub-authors">Mekler, E. D., <strong>Brühlmann, F.</strong>, Tuch, A. N., &amp; Opwis, K.</div>
+        <div class="pub-venue">Computers in Human Behavior, 71, 525–534</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.chb.2015.08.048" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{mekler2017gamification,
+  title   = {Towards understanding the effects of individual gamification elements on
+             intrinsic motivation and performance},
+  author  = {Mekler, Elisa D. and Br{\"u}hlmann, Florian and Tuch, Alexandre N. and
+             Opwis, Klaus},
+  journal = {Computers in Human Behavior},
+  volume  = {71},
+  pages   = {525--534},
+  doi     = {10.1016/j.chb.2015.08.048},
+  year    = {2017}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2016 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2016</div>
+
+      <div class="pub">
+        <div class="pub-title">Measuring user rated language quality: Development and validation of the user interface Language Quality Survey (LQS)</div>
+        <div class="pub-authors">Bargas-Avila, J. A. &amp; <strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">International Journal of Human-Computer Studies, 86, 1–10</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1016/j.ijhcs.2015.08.010" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@article{bargasavila2016lqs,
+  title   = {Measuring user rated language quality: Development and validation of the
+             user interface Language Quality Survey ({LQS})},
+  author  = {Bargas-Avila, Javier A. and Br{\"u}hlmann, Florian},
+  journal = {International Journal of Human-Computer Studies},
+  volume  = {86},
+  pages   = {1--10},
+  doi     = {10.1016/j.ijhcs.2015.08.010},
+  year    = {2016}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Online Playtesting With Crowdsourcing: Advantages and Challenges <span class="badge badge-workshop">Workshop</span></div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong>, Schmid, G.-M., &amp; Mekler, E. D.</div>
+        <div class="pub-venue">CHI 2016 Workshop: Lightweight Games User Research for Indies and Non-Profit Organizations</div>
+        <div class="pub-links">
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{bruhlmann2016online,
+  title     = {Online Playtesting With Crowdsourcing: Advantages and Challenges},
+  author    = {Br{\"u}hlmann, Florian and Schmid, Gian-Marco and Mekler, Elisa D.},
+  booktitle = {CHI 2016 Workshop: Lightweight Games User Research for Indies and
+               Non-Profit Organizations},
+  year      = {2016}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2015 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2015</div>
+
+      <div class="pub">
+        <div class="pub-title">How to Measure the Game Experience? Analysis of the Factor Structure of Two Questionnaires</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong> &amp; Schmid, G.-M.</div>
+        <div class="pub-venue">CHI '15 Extended Abstracts on Human Factors in Computing Systems, pp. 1181–1186</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/2702613.2732831" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{bruhlmann2015gameexperience,
+  title     = {How to Measure the Game Experience? Analysis of the Factor Structure
+               of Two Questionnaires},
+  author    = {Br{\"u}hlmann, Florian and Schmid, Gian-Marco},
+  booktitle = {CHI '15 Extended Abstracts on Human Factors in Computing Systems},
+  pages     = {1181--1186},
+  doi       = {10.1145/2702613.2732831},
+  year      = {2015}
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- ── 2013 ────────────────────────────────────── -->
+    <div class="year-group">
+      <div class="year-heading">2013</div>
+
+      <div class="pub">
+        <div class="pub-title">Disassembling gamification: The effects of points and meaning on user motivation and performance</div>
+        <div class="pub-authors">Mekler, E. D., <strong>Brühlmann, F.</strong>, Opwis, K., &amp; Tuch, A. N.</div>
+        <div class="pub-venue">CHI '13 Extended Abstracts on Human Factors in Computing Systems, pp. 1137–1142</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/2468356.2468559" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{mekler2013disassembling,
+  title     = {Disassembling gamification: The effects of points and meaning on user
+               motivation and performance},
+  author    = {Mekler, Elisa D. and Br{\"u}hlmann, Florian and Opwis, Klaus and
+               Tuch, Alexandre N.},
+  booktitle = {CHI '13 Extended Abstracts on Human Factors in Computing Systems},
+  pages     = {1137--1142},
+  doi       = {10.1145/2468356.2468559},
+  year      = {2013}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Do points, levels and leaderboards harm intrinsic motivation? An empirical analysis of common gamification elements</div>
+        <div class="pub-authors">Mekler, E. D., <strong>Brühlmann, F.</strong>, Opwis, K., &amp; Tuch, A. N.</div>
+        <div class="pub-venue">Proceedings of the First International Conference on Gameful Design, Research, and Applications (Gamification 2013), pp. 66–73</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.1145/2583008.2583017" target="_blank">DOI ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@inproceedings{mekler2013points,
+  title     = {Do points, levels and leaderboards harm intrinsic motivation? An empirical
+               analysis of common gamification elements},
+  author    = {Mekler, Elisa D. and Br{\"u}hlmann, Florian and Opwis, Klaus and
+               Tuch, Alexandre N.},
+  booktitle = {Proceedings of the First International Conference on Gameful Design,
+               Research, and Applications},
+  pages     = {66--73},
+  doi       = {10.1145/2583008.2583017},
+  year      = {2013}
+}</pre></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Gamification From the Perspective of Self-Determination Theory and Flow</div>
+        <div class="pub-authors"><strong>Brühlmann, F.</strong></div>
+        <div class="pub-venue">Bachelor's Thesis, University of Basel</div>
+        <div class="pub-links">
+          <a class="pub-btn" href="https://doi.org/10.31237/osf.io/6kauv" target="_blank">OSF ↗</a>
+          <button class="pub-btn" onclick="toggleBibtex(this)">BibTeX</button>
+        </div>
+        <div class="bibtex-block"><button class="copy-btn" onclick="copyBibtex(this)">Copy</button><pre>@misc{bruhlmann2013thesis,
+  title        = {Gamification From the Perspective of Self-Determination Theory and Flow},
+  author       = {Br{\"u}hlmann, Florian},
+  howpublished = {Bachelor's Thesis, University of Basel},
+  doi          = {10.31237/osf.io/6kauv},
+  year         = {2013}
+}</pre></div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================
+       CONTACT
+       ==================================================== -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Feel free to reach out via the form below or connect on <a href="https://www.linkedin.com/in/fbruehlmann/">LinkedIn</a>.</p>
+    <form action="https://formspree.io/f/xdawlrad" method="POST" style="margin-top:1.25rem; max-width:520px;">
+      <div style="margin-bottom:0.75rem;">
+        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Name</label>
+        <input type="text" name="name" required
+          style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none;">
+      </div>
+      <div style="margin-bottom:0.75rem;">
+        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Email</label>
+        <input type="email" name="email" required
+          style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none;">
+      </div>
+      <div style="margin-bottom:0.75rem;">
+        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Message</label>
+        <textarea name="message" rows="5" required
+          style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none; resize:vertical;"></textarea>
+      </div>
+      <!-- honeypot -->
+      <input type="text" name="_gotcha" style="display:none;">
+      <button type="submit"
+        style="padding:0.45rem 1.1rem; font-size:0.875rem; font-family:inherit; font-weight:500; background:#1d4ed8; color:#fff; border:none; border-radius:5px; cursor:pointer;">Send</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  Florian Brühlmann &middot; bruehlmann.io
+</footer>
+
+<script>
+var topicAssignments = {
+  'scharowski2025trust':           'ai-trust methods',
+  'spiess2024bringing':            'ux',
+  'perrig2024development':         'ux methods',
+  'perrig2024measurement':         'ux methods',
+  'scharowski2024trust':           'ai-trust methods',
+  'scharowski2023certification':   'ai-trust',
+  'scharowski2023exploring':       'ai-trust',
+  'perrig2023smartphone':          'ux',
+  'aeschbach2023psychology':       'gamification',
+  'bruhlmann2023mean':             'methods ux',
+  'perrig2023trust':               'ai-trust methods',
+  'vollenwyder2023compliance':     'accessibility',
+  'scharowski2022trust':           'ai-trust',
+  'aeschbach2021transparency':     'methods gamification',
+  'kayser2021measuring':           'gamification methods',
+  'linxen2021weird':               'methods',
+  'pimmer2021whatsapp':            'mobile-learning',
+  'scharowski2021empirical':       'ai-trust',
+  'bruehlmann2020motivational':    'gamification',
+  'bruhlmann2020quality':          'methods',
+  'bruhlmann2020trustdiff':        'ai-trust ux',
+  'buttrick2020manylabs5a':        'methods',
+  'ebersole2020manylabs5b':        'methods',
+  'vollenwyder2020train':          'accessibility',
+  'vollenwyder2020webprofessionals': 'accessibility',
+  'pimmer2019facilitating':        'mobile-learning',
+  'vollenwyder2019salient':        'accessibility',
+  'bruhlmann2018umi':              'ux',
+  'law2018geq':                    'gamification methods',
+  'pimmer2018nursing':             'mobile-learning',
+  'bruhlmann2018surveys':          'gamification',
+  'vollenwyder2018plain':          'accessibility ux',
+  'petralito2017death':            'gamification',
+  'mekler2017gamification':        'gamification',
+  'bargasavila2016lqs':            'ux',
+  'bruhlmann2017framing':          'gamification',
+  'bruhlmann2016online':           'gamification',
+  'bruhlmann2015gameexperience':   'gamification methods',
+  'mekler2013disassembling':       'gamification',
+  'mekler2013points':              'gamification',
+  'bruhlmann2013thesis':           'gamification',
+  'bruhlmann2024effectiveness':    'methods',
+  'perrig2024independent':         'gamification methods',
+  'aeschbach2022breaking':         'gamification',
+  'memeti2022lol':                 'gamification methods',
+  'von2022independent':            'gamification methods',
+  'bruhlmann2018understanding':    'methods ux'
+};
+
+function initTopicFilter() {
+  // Tag each pub with data-topics via bibtex key
+  document.querySelectorAll('.pub').forEach(function(pub) {
+    var pre = pub.querySelector('pre');
+    if (pre) {
+      var m = pre.textContent.match(/@\w+\{(\w+),/);
+      if (m && topicAssignments[m[1]]) {
+        pub.setAttribute('data-topics', topicAssignments[m[1]]);
+      }
+    }
+  });
+
+  // Wire up filter pills
+  var pills = document.querySelectorAll('.topic-pill');
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      var filter = pill.getAttribute('data-filter');
+      document.querySelectorAll('.pub').forEach(function(pub) {
+        if (filter === 'all') {
+          pub.classList.remove('hidden');
+        } else {
+          var topics = (pub.getAttribute('data-topics') || '').split(' ');
+          pub.classList.toggle('hidden', topics.indexOf(filter) === -1);
+        }
+      });
+      document.querySelectorAll('.year-group').forEach(function(grp) {
+        grp.classList.toggle('hidden', !grp.querySelector('.pub:not(.hidden)'));
+      });
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initTopicFilter);
+
+document.querySelectorAll('.year-bar-col').forEach(function(col) {
+  col.addEventListener('click', function() {
+    var year = col.getAttribute('data-year');
+    var headings = document.querySelectorAll('.year-heading');
+    for (var i = 0; i < headings.length; i++) {
+      if (headings[i].textContent.trim() === year) {
+        var top = headings[i].getBoundingClientRect().top + window.scrollY - 72;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+        break;
+      }
+    }
+  });
+});
+
+function toggleBibtex(btn) {
+  var pub = btn.closest('.pub');
+  var block = pub.querySelector('.bibtex-block');
+  var isOpen = block.classList.contains('open');
+  block.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+  btn.textContent = isOpen ? 'BibTeX' : 'Hide BibTeX';
+}
+
+function copyBibtex(btn) {
+  var pre = btn.closest('.bibtex-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent.trim()).then(function() {
+    var orig = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function() { btn.textContent = orig; }, 1500);
+  });
+}
+</script>
+
+</body>
+</html>
