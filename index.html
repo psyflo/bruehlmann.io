@@ -6,6 +6,70 @@
 <title>Florian Brühlmann, PhD</title>
 <meta name="description" content="Florian Brühlmann – Data Insights Lead with a PhD in Human-Computer Interaction. Data science, BI, and AI strategy in life sciences.">
 <style>
+/* === CSS Variables === */
+:root {
+  --bg: #ffffff;
+  --bg-header: rgba(255,255,255,0.96);
+  --bg-card: #f8fafc;
+  --text: #1a1a1a;
+  --text-heading: #111;
+  --text-secondary: #374151;
+  --text-muted: #6b7280;
+  --text-nav: #4b5563;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --border-code: #e2e8f0;
+  --accent: #1d4ed8;
+  --accent-bg: #eff6ff;
+  --accent-border: #bfdbfe;
+  --code-bg: #f8fafc;
+  --code-text: #1e293b;
+  --copy-color: #64748b;
+  --copy-border: #cbd5e1;
+}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --bg-header: rgba(15,23,42,0.96);
+  --bg-card: #1e293b;
+  --text: #e2e8f0;
+  --text-heading: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-nav: #94a3b8;
+  --border: #334155;
+  --border-light: #1e293b;
+  --border-code: #334155;
+  --accent: #60a5fa;
+  --accent-bg: rgba(96,165,250,0.1);
+  --accent-border: #3b82f6;
+  --code-bg: #0f172a;
+  --code-text: #cbd5e1;
+  --copy-color: #94a3b8;
+  --copy-border: #475569;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f172a;
+    --bg-header: rgba(15,23,42,0.96);
+    --bg-card: #1e293b;
+    --text: #e2e8f0;
+    --text-heading: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-nav: #94a3b8;
+    --border: #334155;
+    --border-light: #1e293b;
+    --border-code: #334155;
+    --accent: #60a5fa;
+    --accent-bg: rgba(96,165,250,0.1);
+    --accent-border: #3b82f6;
+    --code-bg: #0f172a;
+    --code-text: #cbd5e1;
+    --copy-color: #94a3b8;
+    --copy-border: #475569;
+  }
+}
+
 /* === Reset & Base === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,7 +78,7 @@
   position: absolute;
   top: -100%;
   left: 1rem;
-  background: #1d4ed8;
+  background: var(--accent);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0 0 5px 5px;
@@ -27,7 +91,7 @@
 
 /* === Focus Styles === */
 :focus-visible {
-  outline: 2px solid #1d4ed8;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
   border-radius: 3px;
 }
@@ -36,20 +100,21 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.65;
-  color: #1a1a1a;
-  background: #ffffff;
+  color: var(--text);
+  background: var(--bg);
+  transition: background 0.2s, color 0.2s;
 }
 
-a { color: #1d4ed8; text-decoration: none; }
+a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* === Header === */
 header {
   position: sticky;
   top: 0;
-  background: rgba(255,255,255,0.96);
+  background: var(--bg-header);
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border);
   z-index: 100;
 }
 
@@ -64,19 +129,36 @@ header {
   gap: 0.4rem;
 }
 
-.site-name { font-weight: 700; font-size: 0.95rem; color: #111; }
+.site-name { font-weight: 700; font-size: 0.95rem; color: var(--text-heading); }
 
 nav {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem 0;
+  align-items: center;
 }
 nav a {
   margin-left: 1.25rem;
   font-size: 0.875rem;
-  color: #4b5563;
+  color: var(--text-nav);
 }
-nav a:hover { color: #1d4ed8; text-decoration: none; }
+nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* === Dark Mode Toggle === */
+.theme-toggle {
+  margin-left: 1rem;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  transition: border-color 0.15s, color 0.15s;
+  font-family: inherit;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
 @media (max-width: 400px) {
   .header-inner { gap: 0.25rem; }
@@ -120,8 +202,13 @@ main {
   height: 152px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e5e7eb;
+  border: 3px solid var(--border);
   display: block;
+  box-shadow: 0 0 0 4px var(--accent-bg), 0 4px 16px rgba(0,0,0,0.08);
+  transition: box-shadow 0.2s;
+}
+.about-photo:hover {
+  box-shadow: 0 0 0 6px var(--accent-border), 0 4px 20px rgba(0,0,0,0.14);
 }
 
 .about-text h1 {
@@ -129,18 +216,18 @@ main {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.15rem;
-  color: #111;
+  color: var(--text-heading);
 }
 
 .role {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
 .about-text p {
   font-size: 0.95rem;
-  color: #374151;
+  color: var(--text-secondary);
   margin-bottom: 0.6rem;
 }
 
@@ -154,11 +241,11 @@ main {
 .interest-tag {
   font-size: 0.75rem;
   font-weight: 500;
-  background: #eff6ff;
-  color: #1d4ed8;
+  background: var(--accent-bg);
+  color: var(--accent);
   padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid #bfdbfe;
+  border: 1px solid var(--accent-border);
 }
 
 .social-links {
@@ -171,16 +258,16 @@ main {
 .social-link {
   font-size: 0.8rem;
   font-weight: 500;
-  color: #374151;
-  border: 1px solid #d1d5db;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
   padding: 0.25rem 0.65rem;
   border-radius: 5px;
   transition: border-color 0.15s, color 0.15s;
 }
-.social-link:hover { border-color: #1d4ed8; color: #1d4ed8; text-decoration: none; }
+.social-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
 
 /* === Divider === */
-hr.divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
+hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
 /* === Publications === */
 #publications { padding-top: 2.5rem; }
@@ -190,12 +277,12 @@ hr.divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
   font-weight: 800;
   letter-spacing: -0.015em;
   margin-bottom: 0.35rem;
-  color: #111;
+  color: var(--text-heading);
 }
 
 .pub-intro {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-bottom: 2rem;
 }
 
@@ -204,36 +291,36 @@ hr.divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
 h3.year-heading {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #1d4ed8;
+  color: var(--accent);
   letter-spacing: 0.04em;
   padding-bottom: 0.35rem;
-  border-bottom: 2px solid #e5e7eb;
+  border-bottom: 2px solid var(--border);
   margin-bottom: 0.25rem;
 }
 
 .pub {
   padding: 0.8rem 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--border-light);
 }
 .pub:last-child { border-bottom: none; }
 
 .pub-title {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #111;
+  color: var(--text-heading);
   margin-bottom: 0.2rem;
   line-height: 1.4;
 }
 
 .pub-authors {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-bottom: 0.15rem;
 }
 
 .pub-venue {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--text-muted);
   font-style: italic;
   margin-bottom: 0.35rem;
 }
@@ -251,7 +338,7 @@ h3.year-heading {
   font-style: normal;
 }
 .badge-award { background: #fef9c3; color: #854d0e; border: 1px solid #fde68a; }
-.badge-preprint { background: #f3f4f6; color: #6b7280; border: 1px solid #e5e7eb; }
+.badge-preprint { background: var(--border-light); color: var(--text-muted); border: 1px solid var(--border); }
 .badge-workshop { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
 
 .pub-links {
@@ -267,23 +354,23 @@ h3.year-heading {
   font-family: inherit;
   padding: 0.28rem 0.65rem;
   border-radius: 4px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border);
   background: transparent;
-  color: #4b5563;
+  color: var(--text-nav);
   cursor: pointer;
   transition: border-color 0.15s, color 0.15s;
   line-height: 1.4;
   display: inline-block;
   min-height: 30px;
 }
-.pub-btn:hover { border-color: #1d4ed8; color: #1d4ed8; text-decoration: none; }
-.pub-btn.active { background: #eff6ff; border-color: #1d4ed8; color: #1d4ed8; }
+.pub-btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.pub-btn.active { background: var(--accent-bg); border-color: var(--accent); color: var(--accent); }
 
 .bibtex-block {
   display: none;
   margin-top: 0.5rem;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-code);
   border-radius: 6px;
   padding: 0.75rem 1rem;
   overflow-x: auto;
@@ -295,7 +382,7 @@ h3.year-heading {
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: 0.74rem;
   line-height: 1.55;
-  color: #1e293b;
+  color: var(--code-text);
   white-space: pre;
 }
 
@@ -305,54 +392,89 @@ h3.year-heading {
   right: 0.4rem;
   font-size: 0.68rem;
   padding: 0.15rem 0.45rem;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--copy-border);
   border-radius: 3px;
-  background: #fff;
-  color: #64748b;
+  background: var(--bg);
+  color: var(--copy-color);
   cursor: pointer;
   font-family: inherit;
 }
-.copy-btn:hover { border-color: #1d4ed8; color: #1d4ed8; }
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 
 /* === Pub Stats Bar === */
 .pub-stats {
   font-size: 0.82rem;
-  color: #6b7280;
+  color: var(--text-muted);
   margin-bottom: 1rem;
 }
 
-/* === Year Bar Chart === */
-.year-chart {
-  display: flex;
-  align-items: flex-end;
-  gap: 4px;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid #e5e7eb;
-  margin-bottom: 1.25rem;
-}
-.year-bar-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  cursor: pointer;
-}
-.year-bar-col:hover .year-label { color: #1d4ed8; }
-.year-bar-body {
+/* === Heatmap === */
+#pubHeatmap { margin-bottom: 1.5rem; }
+
+.heatmap-table {
   width: 100%;
-  background: #bfdbfe;
-  border-radius: 3px 3px 0 0;
-  min-height: 3px;
-  transition: background 0.12s;
+  border-collapse: separate;
+  border-spacing: 3px;
+  margin-bottom: 0.35rem;
 }
-.year-bar-col:hover .year-bar-body { background: #93c5fd; }
-.year-label {
+.heatmap-corner { width: 130px; }
+.heatmap-year {
   font-size: 0.6rem;
-  color: #9ca3af;
-  line-height: 1;
+  color: var(--text-muted);
+  text-align: center;
+  font-weight: 500;
+  padding-bottom: 3px;
   white-space: nowrap;
 }
+.heatmap-topic {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: right;
+  padding-right: 8px;
+  white-space: nowrap;
+  font-weight: 400;
+}
+.heatmap-cell {
+  height: 22px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  transition: transform 0.1s, filter 0.1s;
+}
+.heatmap-cell span {
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  line-height: 1;
+  pointer-events: none;
+}
+.heatmap-cell[data-count="0"] { background: var(--border-light); cursor: default; }
+.heatmap-cell[data-intensity="1"] { background: #bfdbfe; }
+.heatmap-cell[data-intensity="2"] { background: #60a5fa; }
+.heatmap-cell[data-intensity="3"] { background: #2563eb; }
+.heatmap-cell[data-intensity="4"] { background: #1d4ed8; }
+[data-theme="dark"] .heatmap-cell[data-intensity="1"] { background: #1e3a5f; }
+[data-theme="dark"] .heatmap-cell[data-intensity="2"] { background: #1d4ed8; }
+[data-theme="dark"] .heatmap-cell[data-intensity="3"] { background: #3b82f6; }
+[data-theme="dark"] .heatmap-cell[data-intensity="4"] { background: #60a5fa; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .heatmap-cell[data-intensity="1"] { background: #1e3a5f; }
+  :root:not([data-theme="light"]) .heatmap-cell[data-intensity="2"] { background: #1d4ed8; }
+  :root:not([data-theme="light"]) .heatmap-cell[data-intensity="3"] { background: #3b82f6; }
+  :root:not([data-theme="light"]) .heatmap-cell[data-intensity="4"] { background: #60a5fa; }
+}
+.heatmap-cell:not([data-count="0"]):hover { transform: scale(1.2); filter: brightness(1.1); z-index: 1; position: relative; }
+.heatmap-cell:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+.heatmap-legend-label { font-size: 0.65rem; color: var(--text-muted); margin: 0 2px; }
+.heatmap-legend-swatch { width: 14px; height: 14px; border-radius: 2px; }
 
 /* === Topic Filter === */
 .topic-filter {
@@ -367,23 +489,23 @@ h3.year-heading {
   font-family: inherit;
   padding: 0.35rem 0.85rem;
   border-radius: 999px;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border);
   background: transparent;
-  color: #4b5563;
+  color: var(--text-nav);
   cursor: pointer;
   transition: all 0.15s;
   line-height: 1.4;
   min-height: 32px;
 }
-.topic-pill:hover { border-color: #1d4ed8; color: #1d4ed8; }
-.topic-pill.active { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.topic-pill:hover { border-color: var(--accent); color: var(--accent); }
+.topic-pill.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 .pub.hidden { display: none; }
 .year-group.hidden { display: none; }
 
 /* === Contact === */
 #contact {
   padding-top: 2.5rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--border);
   margin-top: 1rem;
 }
 #contact h2 {
@@ -391,9 +513,16 @@ h3.year-heading {
   font-weight: 800;
   letter-spacing: -0.015em;
   margin-bottom: 0.75rem;
-  color: #111;
+  color: var(--text-heading);
 }
-#contact p { font-size: 0.95rem; color: #374151; margin-bottom: 0.5rem; }
+#contact p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.5rem; }
+
+/* === Contact form dark mode === */
+#contact input, #contact textarea {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--border) !important;
+}
 
 /* === Footer === */
 footer {
@@ -402,10 +531,45 @@ footer {
   padding: 2rem 1.5rem;
   text-align: center;
   font-size: 0.78rem;
-  color: #6b7280;
-  border-top: 1px solid #e5e7eb;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+}
+
+/* === Citation count badge === */
+.cite-count {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--border-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.4rem;
+  white-space: nowrap;
+  cursor: default;
+}
+
+/* === Scroll Animations === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1; transform: none; transition: none; }
+  body { transition: none; }
 }
 </style>
+<script>
+// Apply theme before paint to avoid flash
+(function(){
+  var t = localStorage.getItem('theme');
+  if (t) document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
 </head>
 <body>
 
@@ -418,6 +582,7 @@ footer {
       <a href="#about">About</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" onclick="toggleTheme()">☾</button>
     </nav>
   </div>
 </header>
@@ -461,20 +626,7 @@ footer {
     <h2>Publications</h2>
 
     <p class="pub-stats">47 publications &middot; CHI &middot; FAccT &middot; Behavior Research Methods &middot; CHI PLAY &middot; IJHCS</p>
-    <div class="year-chart">
-      <div class="year-bar-col" data-year="2013" title="2013 · 3 publications" role="button" tabindex="0" aria-label="Jump to 2013 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2013</div></div>
-      <div class="year-bar-col" data-year="2015" title="2015 · 1 publication" role="button" tabindex="0" aria-label="Jump to 2015 publications"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2015</div></div>
-      <div class="year-bar-col" data-year="2016" title="2016 · 2 publications" role="button" tabindex="0" aria-label="Jump to 2016 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2016</div></div>
-      <div class="year-bar-col" data-year="2017" title="2017 · 3 publications" role="button" tabindex="0" aria-label="Jump to 2017 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2017</div></div>
-      <div class="year-bar-col" data-year="2018" title="2018 · 6 publications" role="button" tabindex="0" aria-label="Jump to 2018 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2018</div></div>
-      <div class="year-bar-col" data-year="2019" title="2019 · 2 publications" role="button" tabindex="0" aria-label="Jump to 2019 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2019</div></div>
-      <div class="year-bar-col" data-year="2020" title="2020 · 7 publications" role="button" tabindex="0" aria-label="Jump to 2020 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2020</div></div>
-      <div class="year-bar-col" data-year="2021" title="2021 · 5 publications" role="button" tabindex="0" aria-label="Jump to 2021 publications"><div class="year-bar-body" style="height:64px"></div><div class="year-label">2021</div></div>
-      <div class="year-bar-col" data-year="2022" title="2022 · 4 publications" role="button" tabindex="0" aria-label="Jump to 2022 publications"><div class="year-bar-body" style="height:51px"></div><div class="year-label">2022</div></div>
-      <div class="year-bar-col" data-year="2023" title="2023 · 7 publications" role="button" tabindex="0" aria-label="Jump to 2023 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2023</div></div>
-      <div class="year-bar-col" data-year="2024" title="2024 · 6 publications" role="button" tabindex="0" aria-label="Jump to 2024 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2024</div></div>
-      <div class="year-bar-col" data-year="2025" title="2025 · 1 publication" role="button" tabindex="0" aria-label="Jump to 2025 publications"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2025</div></div>
-    </div>
+    <div id="pubHeatmap" aria-label="Publications heatmap by topic and year"></div>
 
     <div class="topic-filter" id="topicFilter">
       <button class="topic-pill active" data-filter="all">All</button>
@@ -1567,8 +1719,8 @@ var topicAssignments = {
   'bruhlmann2018understanding':    'methods ux'
 };
 
+/* === Topic filter === */
 function initTopicFilter() {
-  // Tag each pub with data-topics via bibtex key
   document.querySelectorAll('.pub').forEach(function(pub) {
     var pre = pub.querySelector('pre');
     if (pre) {
@@ -1578,8 +1730,6 @@ function initTopicFilter() {
       }
     }
   });
-
-  // Wire up filter pills
   var pills = document.querySelectorAll('.topic-pill');
   pills.forEach(function(pill) {
     pill.setAttribute('aria-pressed', pill.classList.contains('active') ? 'true' : 'false');
@@ -1603,50 +1753,142 @@ function initTopicFilter() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  initTopicFilter();
+/* === Heatmap === */
+function buildHeatmap() {
+  var topicLabels = {
+    'ai-trust':       'AI & Trust',
+    'gamification':   'Gamification',
+    'ux':             'UX & Aesthetics',
+    'accessibility':  'Accessibility',
+    'methods':        'Methods',
+    'mobile-learning':'Mobile Learning'
+  };
+  var topicKeys = Object.keys(topicLabels);
 
-  // Set initial aria-expanded on all BibTeX toggle buttons
-  document.querySelectorAll('.pub-btn[onclick*="toggleBibtex"]').forEach(function(btn) {
-    btn.setAttribute('aria-expanded', 'false');
+  // Build year × topic matrix from DOM (data-topics already set by initTopicFilter)
+  var matrix = {};
+  var years = [];
+  document.querySelectorAll('.year-group').forEach(function(grp) {
+    var year = grp.querySelector('.year-heading').textContent.trim();
+    years.unshift(year); // chronological
+    matrix[year] = {};
+    topicKeys.forEach(function(t) { matrix[year][t] = 0; });
+    grp.querySelectorAll('.pub').forEach(function(pub) {
+      (pub.getAttribute('data-topics') || '').split(' ').forEach(function(t) {
+        if (matrix[year][t] !== undefined) matrix[year][t]++;
+      });
+    });
   });
 
-  // Announce external links that open in a new tab
-  document.querySelectorAll('a[target="_blank"]').forEach(function(a) {
-    if (!a.getAttribute('aria-label')) {
-      a.setAttribute('aria-label', a.textContent.trim() + ' (opens in new tab)');
-    }
+  var maxVal = 0;
+  years.forEach(function(y) {
+    topicKeys.forEach(function(t) { if (matrix[y][t] > maxVal) maxVal = matrix[y][t]; });
   });
-});
 
-document.querySelectorAll('.year-bar-col').forEach(function(col) {
-  function scrollToYear() {
-    var year = col.getAttribute('data-year');
-    var headings = document.querySelectorAll('.year-heading');
-    for (var i = 0; i < headings.length; i++) {
-      if (headings[i].textContent.trim() === year) {
-        var top = headings[i].getBoundingClientRect().top + window.scrollY - 72;
-        window.scrollTo({ top: top, behavior: 'smooth' });
-        break;
+  // Build accessible table
+  var html = '<table class="heatmap-table" role="grid" aria-label="Publications by topic and year">';
+  html += '<thead><tr><th scope="col" class="heatmap-corner"></th>';
+  years.forEach(function(y) { html += '<th scope="col" class="heatmap-year">' + y + '</th>'; });
+  html += '</tr></thead><tbody>';
+
+  topicKeys.forEach(function(topic) {
+    html += '<tr><th scope="row" class="heatmap-topic">' + topicLabels[topic] + '</th>';
+    years.forEach(function(y) {
+      var count = matrix[y][topic];
+      var intensity = count === 0 ? 0 : Math.max(1, Math.ceil((count / maxVal) * 4));
+      var label = topicLabels[topic] + ', ' + y + ': ' + (count || 'no') + ' publication' + (count !== 1 ? 's' : '');
+      html += '<td class="heatmap-cell" data-count="' + count + '" data-intensity="' + intensity + '"'
+            + ' data-topic="' + topic + '" data-year="' + y + '"'
+            + ' tabindex="' + (count > 0 ? '0' : '-1') + '"'
+            + ' role="gridcell" aria-label="' + label + '" title="' + label + '">'
+            + (count > 0 ? '<span aria-hidden="true">' + count + '</span>' : '')
+            + '</td>';
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+
+  // Legend
+  var swatchColors = ['var(--border-light)', '#bfdbfe', '#60a5fa', '#2563eb', '#1d4ed8'];
+  html += '<div class="heatmap-legend" aria-label="Colour scale: fewer to more publications">';
+  html += '<span class="heatmap-legend-label">Fewer</span>';
+  swatchColors.forEach(function(c) {
+    html += '<div class="heatmap-legend-swatch" style="background:' + c + '" aria-hidden="true"></div>';
+  });
+  html += '<span class="heatmap-legend-label">More</span></div>';
+
+  document.getElementById('pubHeatmap').innerHTML = html;
+
+  // Click/keyboard: filter by topic and scroll to year
+  document.querySelectorAll('.heatmap-cell[data-count]').forEach(function(cell) {
+    if (cell.getAttribute('data-count') === '0') return;
+    function activate() {
+      // Filter to topic
+      var topic = cell.getAttribute('data-topic');
+      var year  = cell.getAttribute('data-year');
+      var pill = document.querySelector('.topic-pill[data-filter="' + topic + '"]');
+      if (pill) pill.click();
+      // Scroll to year
+      var headings = document.querySelectorAll('.year-heading');
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].textContent.trim() === year) {
+          var top = headings[i].getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+          break;
+        }
       }
     }
-  }
-  col.addEventListener('click', scrollToYear);
-  col.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToYear(); }
+    cell.addEventListener('click', activate);
+    cell.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
   });
-});
+}
 
+/* === Scroll animations === */
+function initScrollAnimations() {
+  if (!window.IntersectionObserver) return;
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('#about, .year-group, #contact').forEach(function(el) {
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+}
+
+/* === Dark mode === */
+function toggleTheme() {
+  var cur = document.documentElement.getAttribute('data-theme');
+  var isDark = cur === 'dark' || (!cur && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  var next = isDark ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+  updateThemeBtn();
+}
+function updateThemeBtn() {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark'
+    || (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  btn.textContent = isDark ? '☀' : '☾';
+  btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+}
+
+/* === BibTeX === */
 function toggleBibtex(btn) {
-  var pub = btn.closest('.pub');
-  var block = pub.querySelector('.bibtex-block');
+  var block = btn.closest('.pub').querySelector('.bibtex-block');
   var isOpen = block.classList.contains('open');
   block.classList.toggle('open', !isOpen);
   btn.classList.toggle('active', !isOpen);
   btn.textContent = isOpen ? 'BibTeX' : 'Hide BibTeX';
   btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
 }
-
 function copyBibtex(btn) {
   var pre = btn.closest('.bibtex-block').querySelector('pre');
   navigator.clipboard.writeText(pre.textContent.trim()).then(function() {
@@ -1655,6 +1897,46 @@ function copyBibtex(btn) {
     setTimeout(function() { btn.textContent = orig; }, 1500);
   });
 }
+
+/* === Citation counts === */
+function loadCitations() {
+  fetch('citations.json?v=' + Date.now())
+    .then(function(r) { return r.ok ? r.json() : null; })
+    .then(function(data) {
+      if (!data || !data.counts) return;
+      document.querySelectorAll('a.pub-btn[href*="doi.org"]').forEach(function(a) {
+        var doi = a.href.replace(/.*doi\.org\//, '');
+        var count = data.counts[doi];
+        if (count != null && count > 0) {
+          var badge = document.createElement('span');
+          badge.className = 'cite-count';
+          badge.textContent = count + '\u00d7';
+          badge.setAttribute('aria-label', count + ' citations');
+          badge.title = count + ' citations (OpenAlex)';
+          a.parentNode.insertBefore(badge, a.nextSibling);
+        }
+      });
+    })
+    .catch(function() {}); // silently ignore if file not yet generated
+}
+
+/* === Init === */
+document.addEventListener('DOMContentLoaded', function() {
+  updateThemeBtn();
+  initTopicFilter();
+  buildHeatmap();
+  initScrollAnimations();
+  loadCitations();
+
+  document.querySelectorAll('.pub-btn[onclick*="toggleBibtex"]').forEach(function(btn) {
+    btn.setAttribute('aria-expanded', 'false');
+  });
+  document.querySelectorAll('a[target="_blank"]').forEach(function(a) {
+    if (!a.getAttribute('aria-label')) {
+      a.setAttribute('aria-label', a.textContent.trim() + ' (opens in new tab)');
+    }
+  });
+});
 </script>
 
 </body>
