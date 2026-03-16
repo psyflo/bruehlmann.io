@@ -1,0 +1,87 @@
+name: Update citation counts
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'   # every Monday at 06:00 UTC
+  workflow_dispatch:        # allow manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-citations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch citation counts from OpenAlex
+        run: |
+          python3 - <<'EOF'
+          import json, time, urllib.request, urllib.parse
+
+          DOIS = [
+            "10.1145/3715275.3732025",
+            "10.1145/3652583.3658077",
+            "10.1080/10447318.2023.2258634",
+            "10.3389/fcomp.2024.1368860",
+            "10.3758/s13428-023-02321-z",
+            "10.1145/3474660",
+            "10.1145/3450337.3483499",
+            "10.1145/3411764.3445488",
+            "10.1016/j.iheduc.2021.100809",
+            "10.1145/3593013.3593994",
+            "10.3389/fcomp.2023.1151150",
+            "10.3389/fpsyg.2023.1113842",
+            "10.1016/j.chb.2023.107828",
+            "10.1145/3544549.3585808",
+            "10.1016/j.ijhcs.2022.102956",
+            "10.3389/frvir.2022.846490",
+            "10.3389/fpsyg.2020.01307",
+            "10.1016/j.metip.2020.100022",
+            "10.1177/2515245920917931",
+            "10.1177/2515245920958687",
+            "10.1007/978-3-030-58796-3_2",
+            "10.1007/978-3-030-58796-3_35",
+            "10.1016/j.compedu.2018.09.005",
+            "10.1016/j.chb.2018.11.016",
+            "10.1145/3173574.3173680",
+            "10.1145/3242671.3242683",
+            "10.1016/j.nedt.2018.01.034",
+            "10.1007/978-3-319-94277-3_80",
+            "10.1007/978-3-658-16926-8",
+            "10.1145/3025453.3026047",
+            "10.1016/j.chb.2015.08.048",
+            "10.1016/j.ijhcs.2015.08.010",
+            "10.1145/2702613.2732831",
+            "10.1145/2468356.2468559",
+            "10.1145/2583008.2583017",
+            "10.31237/osf.io/6kauv",
+            "10.1145/3411764.3445488",
+          ]
+
+          results = {}
+          for doi in DOIS:
+            try:
+              url = "https://api.openalex.org/works/https://doi.org/" + urllib.parse.quote(doi, safe="")
+              req = urllib.request.Request(url, headers={"User-Agent": "bruehlmann.io/citations-bot (mailto:webmaster@bruehlmann.io)"})
+              with urllib.request.urlopen(req, timeout=10) as r:
+                data = json.loads(r.read())
+                results[doi] = data.get("cited_by_count", 0)
+            except Exception as e:
+              print(f"Warning: could not fetch {doi}: {e}")
+              results[doi] = None
+            time.sleep(0.3)  # be polite to the API
+
+          with open("citations.json", "w") as f:
+            json.dump({"updated": "$(date -u +%Y-%m-%d)", "counts": results}, f, indent=2)
+
+          print(f"Fetched {len(results)} entries")
+          EOF
+
+      - name: Commit citations.json if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add citations.json
+          git diff --cached --quiet || git commit -m "chore: update citation counts [skip ci]"
+          git push
