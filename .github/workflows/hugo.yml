@@ -24,6 +24,25 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Minify HTML
+        run: |
+          npm install -g html-minifier-terser
+          html-minifier-terser \
+            --collapse-whitespace \
+            --remove-comments \
+            --remove-optional-tags \
+            --remove-redundant-attributes \
+            --use-short-doctype \
+            --minify-css true \
+            --minify-js true \
+            index.html -o index.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

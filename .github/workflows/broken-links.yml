@@ -1,0 +1,29 @@
+name: Broken link checker
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'   # every Monday at 07:00 UTC
+  push:
+    branches: ["master"]
+    paths: ["index.html"]
+  workflow_dispatch:
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >
+            --verbose
+            --no-progress
+            --exclude-loopback
+            --exclude '^mailto:'
+            --exclude '^https://doi\.org/'
+            --timeout 20
+            --max-retries 3
+            index.html
+          fail: true
