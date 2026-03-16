@@ -21,7 +21,7 @@ jobs:
           python3 - <<'PYEOF'
           import json, time, urllib.request, urllib.parse, re, sys, os
 
-          AUTHOR_ID = "A5030759671"   # Florian Brühlmann on OpenAlex
+          AUTHOR_ID = "A5080631961"   # Florian Brühlmann on OpenAlex
 
           def openalex_get(url):
               req = urllib.request.Request(
