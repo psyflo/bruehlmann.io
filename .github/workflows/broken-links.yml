@@ -23,6 +23,9 @@ jobs:
             --exclude-loopback
             --exclude '^mailto:'
             --exclude '^https://doi\.org/'
+            --exclude '^https://formspree\.io/'
+            --exclude '^https://www\.linkedin\.com/'
+            --exclude '^https://www\.researchgate\.net/'
             --timeout 20
             --max-retries 3
             index.html
