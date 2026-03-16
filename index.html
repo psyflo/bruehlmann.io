@@ -144,15 +144,15 @@ nav a {
 }
 nav a:hover { color: var(--accent); text-decoration: none; }
 
-/* === Dark Mode Toggle === */
+/* === Dark Mode Toggle (footer) === */
 .theme-toggle {
-  margin-left: 1rem;
+  margin-top: 0.6rem;
   background: none;
   border: 1px solid var(--border);
   border-radius: 5px;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.65rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   line-height: 1.4;
   transition: border-color 0.15s, color 0.15s;
@@ -410,14 +410,25 @@ h3.year-heading {
 
 /* === Heatmap === */
 #pubHeatmap { margin-bottom: 1.5rem; }
+.heatmap-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* subtle scroll hint on mobile */
+  mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 24px), transparent 100%);
+}
+.heatmap-scroll:not(.overflowing) {
+  mask-image: none;
+  -webkit-mask-image: none;
+}
 
 .heatmap-table {
-  width: 100%;
+  min-width: 520px;
   border-collapse: separate;
   border-spacing: 3px;
   margin-bottom: 0.35rem;
 }
-.heatmap-corner { width: 130px; }
+.heatmap-corner { width: 120px; }
 .heatmap-year {
   font-size: 0.6rem;
   color: var(--text-muted);
@@ -582,7 +593,6 @@ footer {
       <a href="#about">About</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" onclick="toggleTheme()">☾</button>
     </nav>
   </div>
 </header>
@@ -1666,6 +1676,8 @@ footer {
 
 <footer>
   Florian Brühlmann &middot; bruehlmann.io
+  <br>
+  <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" onclick="toggleTheme()">☾ theme</button>
 </footer>
 
 <script>
@@ -1808,16 +1820,21 @@ function buildHeatmap() {
   });
   html += '</tbody></table>';
 
-  // Legend
+  // Legend (outside scroll so it stays visible)
   var swatchColors = ['var(--border-light)', '#bfdbfe', '#60a5fa', '#2563eb', '#1d4ed8'];
-  html += '<div class="heatmap-legend" aria-label="Colour scale: fewer to more publications">';
-  html += '<span class="heatmap-legend-label">Fewer</span>';
+  var legend = '<div class="heatmap-legend" aria-label="Colour scale: fewer to more publications">';
+  legend += '<span class="heatmap-legend-label">Fewer</span>';
   swatchColors.forEach(function(c) {
-    html += '<div class="heatmap-legend-swatch" style="background:' + c + '" aria-hidden="true"></div>';
+    legend += '<div class="heatmap-legend-swatch" style="background:' + c + '" aria-hidden="true"></div>';
   });
-  html += '<span class="heatmap-legend-label">More</span></div>';
+  legend += '<span class="heatmap-legend-label">More</span></div>';
 
-  document.getElementById('pubHeatmap').innerHTML = html;
+  var container = document.getElementById('pubHeatmap');
+  container.innerHTML = '<div class="heatmap-scroll">' + html + '</div>' + legend;
+
+  // Apply scroll mask only when content overflows
+  var scroller = container.querySelector('.heatmap-scroll');
+  if (scroller.scrollWidth > scroller.clientWidth) scroller.classList.add('overflowing');
 
   // Click/keyboard: filter by topic and scroll to year
   document.querySelectorAll('.heatmap-cell[data-count]').forEach(function(cell) {
