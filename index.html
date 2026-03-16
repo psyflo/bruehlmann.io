@@ -9,6 +9,29 @@
 /* === Reset & Base === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* === Skip Link === */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 5px 5px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  z-index: 999;
+  text-decoration: none;
+}
+.skip-link:focus { top: 0; }
+
+/* === Focus Styles === */
+:focus-visible {
+  outline: 2px solid #1d4ed8;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
@@ -178,7 +201,7 @@ hr.divider { border: none; border-top: 1px solid #e5e7eb; margin: 0; }
 
 .year-group { margin-bottom: 2rem; }
 
-.year-heading {
+h3.year-heading {
   font-size: 0.95rem;
   font-weight: 700;
   color: #1d4ed8;
@@ -379,17 +402,19 @@ footer {
   padding: 2rem 1.5rem;
   text-align: center;
   font-size: 0.78rem;
-  color: #9ca3af;
+  color: #6b7280;
   border-top: 1px solid #e5e7eb;
 }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <header>
   <div class="header-inner">
     <span class="site-name">Florian Brühlmann</span>
-    <nav>
+    <nav aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
@@ -397,7 +422,7 @@ footer {
   </div>
 </header>
 
-<main>
+<main id="main-content">
 
   <!-- ====================================================
        ABOUT
@@ -421,13 +446,13 @@ footer {
       <div class="social-links">
         <a class="social-link" href="https://scholar.google.com/citations?user=mQej0vsAAAAJ" target="_blank">Google Scholar</a>
         <a class="social-link" href="https://www.researchgate.net/profile/Florian_Bruehlmann" target="_blank">ResearchGate</a>
-        <a class="social-link" href="http://orcid.org/0000-0001-8945-3273" target="_blank">ORCID</a>
+        <a class="social-link" href="https://orcid.org/0000-0001-8945-3273" target="_blank">ORCID</a>
         <a class="social-link" href="https://www.linkedin.com/in/fbruehlmann/" target="_blank">LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <hr class="divider">
+  <hr class="divider" aria-hidden="true">
 
   <!-- ====================================================
        PUBLICATIONS
@@ -437,18 +462,18 @@ footer {
 
     <p class="pub-stats">47 publications &middot; CHI &middot; FAccT &middot; Behavior Research Methods &middot; CHI PLAY &middot; IJHCS</p>
     <div class="year-chart">
-      <div class="year-bar-col" data-year="2013" title="2013 · 3 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2013</div></div>
-      <div class="year-bar-col" data-year="2015" title="2015 · 1 publication"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2015</div></div>
-      <div class="year-bar-col" data-year="2016" title="2016 · 2 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2016</div></div>
-      <div class="year-bar-col" data-year="2017" title="2017 · 3 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2017</div></div>
-      <div class="year-bar-col" data-year="2018" title="2018 · 6 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2018</div></div>
-      <div class="year-bar-col" data-year="2019" title="2019 · 2 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2019</div></div>
-      <div class="year-bar-col" data-year="2020" title="2020 · 7 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2020</div></div>
-      <div class="year-bar-col" data-year="2021" title="2021 · 5 publications"><div class="year-bar-body" style="height:64px"></div><div class="year-label">2021</div></div>
-      <div class="year-bar-col" data-year="2022" title="2022 · 4 publications"><div class="year-bar-body" style="height:51px"></div><div class="year-label">2022</div></div>
-      <div class="year-bar-col" data-year="2023" title="2023 · 7 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2023</div></div>
-      <div class="year-bar-col" data-year="2024" title="2024 · 6 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2024</div></div>
-      <div class="year-bar-col" data-year="2025" title="2025 · 1 publication"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2025</div></div>
+      <div class="year-bar-col" data-year="2013" title="2013 · 3 publications" role="button" tabindex="0" aria-label="Jump to 2013 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2013</div></div>
+      <div class="year-bar-col" data-year="2015" title="2015 · 1 publication" role="button" tabindex="0" aria-label="Jump to 2015 publications"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2015</div></div>
+      <div class="year-bar-col" data-year="2016" title="2016 · 2 publications" role="button" tabindex="0" aria-label="Jump to 2016 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2016</div></div>
+      <div class="year-bar-col" data-year="2017" title="2017 · 3 publications" role="button" tabindex="0" aria-label="Jump to 2017 publications"><div class="year-bar-body" style="height:39px"></div><div class="year-label">2017</div></div>
+      <div class="year-bar-col" data-year="2018" title="2018 · 6 publications" role="button" tabindex="0" aria-label="Jump to 2018 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2018</div></div>
+      <div class="year-bar-col" data-year="2019" title="2019 · 2 publications" role="button" tabindex="0" aria-label="Jump to 2019 publications"><div class="year-bar-body" style="height:26px"></div><div class="year-label">2019</div></div>
+      <div class="year-bar-col" data-year="2020" title="2020 · 7 publications" role="button" tabindex="0" aria-label="Jump to 2020 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2020</div></div>
+      <div class="year-bar-col" data-year="2021" title="2021 · 5 publications" role="button" tabindex="0" aria-label="Jump to 2021 publications"><div class="year-bar-body" style="height:64px"></div><div class="year-label">2021</div></div>
+      <div class="year-bar-col" data-year="2022" title="2022 · 4 publications" role="button" tabindex="0" aria-label="Jump to 2022 publications"><div class="year-bar-body" style="height:51px"></div><div class="year-label">2022</div></div>
+      <div class="year-bar-col" data-year="2023" title="2023 · 7 publications" role="button" tabindex="0" aria-label="Jump to 2023 publications"><div class="year-bar-body" style="height:90px"></div><div class="year-label">2023</div></div>
+      <div class="year-bar-col" data-year="2024" title="2024 · 6 publications" role="button" tabindex="0" aria-label="Jump to 2024 publications"><div class="year-bar-body" style="height:77px"></div><div class="year-label">2024</div></div>
+      <div class="year-bar-col" data-year="2025" title="2025 · 1 publication" role="button" tabindex="0" aria-label="Jump to 2025 publications"><div class="year-bar-body" style="height:13px"></div><div class="year-label">2025</div></div>
     </div>
 
     <div class="topic-filter" id="topicFilter">
@@ -463,7 +488,7 @@ footer {
 
     <!-- ── 2025 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2025</div>
+      <h3 class="year-heading">2025</h3>
 
       <div class="pub">
         <div class="pub-title">To trust or distrust AI: a questionnaire validation study</div>
@@ -489,7 +514,7 @@ footer {
 
     <!-- ── 2024 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2024</div>
+      <h3 class="year-heading">2024</h3>
 
       <div class="pub">
         <div class="pub-title">Bringing video browsing to virtual reality: Empirical evaluation of a novel multimedia drawer</div>
@@ -616,7 +641,7 @@ footer {
 
     <!-- ── 2023 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2023</div>
+      <h3 class="year-heading">2023</h3>
 
       <div class="pub">
         <div class="pub-title">Certification labels for trustworthy AI: Insights from an empirical mixed-method study</div>
@@ -762,7 +787,7 @@ footer {
 
     <!-- ── 2022 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2022</div>
+      <h3 class="year-heading">2022</h3>
 
       <div class="pub">
         <div class="pub-title">Trust and Reliance in XAI – Distinguishing Between Attitudinal and Behavioral Measures <span class="badge badge-workshop">Workshop</span></div>
@@ -842,7 +867,7 @@ footer {
 
     <!-- ── 2021 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2021</div>
+      <h3 class="year-heading">2021</h3>
 
       <div class="pub">
         <div class="pub-title">Transparency in Measurement Reporting: A Systematic Literature Review of CHI PLAY <span class="badge badge-award">Honorable Mention</span></div>
@@ -945,7 +970,7 @@ footer {
 
     <!-- ── 2020 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2020</div>
+      <h3 class="year-heading">2020</h3>
 
       <div class="pub">
         <div class="pub-title">Motivational Profiling of League of Legends Players</div>
@@ -1097,7 +1122,7 @@ footer {
 
     <!-- ── 2019 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2019</div>
+      <h3 class="year-heading">2019</h3>
 
       <div class="pub">
         <div class="pub-title">Facilitating professional mobile learning communities with instant messaging</div>
@@ -1142,7 +1167,7 @@ footer {
 
     <!-- ── 2018 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2018</div>
+      <h3 class="year-heading">2018</h3>
 
       <div class="pub">
         <div class="pub-title">Measuring the "Why" of Interaction: Development and Validation of the User Motivation Inventory (UMI)</div>
@@ -1263,7 +1288,7 @@ footer {
 
     <!-- ── 2017 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2017</div>
+      <h3 class="year-heading">2017</h3>
 
       <div class="pub">
         <div class="pub-title">The Effects of Framing in Gamification: A Study of Failure</div>
@@ -1328,7 +1353,7 @@ footer {
 
     <!-- ── 2016 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2016</div>
+      <h3 class="year-heading">2016</h3>
 
       <div class="pub">
         <div class="pub-title">Measuring user rated language quality: Development and validation of the user interface Language Quality Survey (LQS)</div>
@@ -1369,7 +1394,7 @@ footer {
 
     <!-- ── 2015 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2015</div>
+      <h3 class="year-heading">2015</h3>
 
       <div class="pub">
         <div class="pub-title">How to Measure the Game Experience? Analysis of the Factor Structure of Two Questionnaires</div>
@@ -1393,7 +1418,7 @@ footer {
 
     <!-- ── 2013 ────────────────────────────────────── -->
     <div class="year-group">
-      <div class="year-heading">2013</div>
+      <h3 class="year-heading">2013</h3>
 
       <div class="pub">
         <div class="pub-title">Disassembling gamification: The effects of points and meaning on user motivation and performance</div>
@@ -1464,18 +1489,18 @@ footer {
     <p>Feel free to reach out via the form below or connect on <a href="https://www.linkedin.com/in/fbruehlmann/">LinkedIn</a>.</p>
     <form action="https://formspree.io/f/xdawlrad" method="POST" style="margin-top:1.25rem; max-width:520px;">
       <div style="margin-bottom:0.75rem;">
-        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Name</label>
-        <input type="text" name="name" required
+        <label for="contact-name" style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Name</label>
+        <input type="text" id="contact-name" name="name" required
           style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none;">
       </div>
       <div style="margin-bottom:0.75rem;">
-        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Email</label>
-        <input type="email" name="email" required
+        <label for="contact-email" style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Email</label>
+        <input type="email" id="contact-email" name="email" required
           style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none;">
       </div>
       <div style="margin-bottom:0.75rem;">
-        <label style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Message</label>
-        <textarea name="message" rows="5" required
+        <label for="contact-message" style="display:block; font-size:0.85rem; font-weight:500; color:#374151; margin-bottom:0.3rem;">Message</label>
+        <textarea id="contact-message" name="message" rows="5" required
           style="width:100%; padding:0.45rem 0.65rem; font-size:0.875rem; font-family:inherit; border:1px solid #d1d5db; border-radius:5px; outline:none; resize:vertical;"></textarea>
       </div>
       <!-- honeypot -->
@@ -1557,9 +1582,11 @@ function initTopicFilter() {
   // Wire up filter pills
   var pills = document.querySelectorAll('.topic-pill');
   pills.forEach(function(pill) {
+    pill.setAttribute('aria-pressed', pill.classList.contains('active') ? 'true' : 'false');
     pill.addEventListener('click', function() {
-      pills.forEach(function(p) { p.classList.remove('active'); });
+      pills.forEach(function(p) { p.classList.remove('active'); p.setAttribute('aria-pressed', 'false'); });
       pill.classList.add('active');
+      pill.setAttribute('aria-pressed', 'true');
       var filter = pill.getAttribute('data-filter');
       document.querySelectorAll('.pub').forEach(function(pub) {
         if (filter === 'all') {
@@ -1576,10 +1603,24 @@ function initTopicFilter() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', initTopicFilter);
+document.addEventListener('DOMContentLoaded', function() {
+  initTopicFilter();
+
+  // Set initial aria-expanded on all BibTeX toggle buttons
+  document.querySelectorAll('.pub-btn[onclick*="toggleBibtex"]').forEach(function(btn) {
+    btn.setAttribute('aria-expanded', 'false');
+  });
+
+  // Announce external links that open in a new tab
+  document.querySelectorAll('a[target="_blank"]').forEach(function(a) {
+    if (!a.getAttribute('aria-label')) {
+      a.setAttribute('aria-label', a.textContent.trim() + ' (opens in new tab)');
+    }
+  });
+});
 
 document.querySelectorAll('.year-bar-col').forEach(function(col) {
-  col.addEventListener('click', function() {
+  function scrollToYear() {
     var year = col.getAttribute('data-year');
     var headings = document.querySelectorAll('.year-heading');
     for (var i = 0; i < headings.length; i++) {
@@ -1589,6 +1630,10 @@ document.querySelectorAll('.year-bar-col').forEach(function(col) {
         break;
       }
     }
+  }
+  col.addEventListener('click', scrollToYear);
+  col.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToYear(); }
   });
 });
 
@@ -1599,6 +1644,7 @@ function toggleBibtex(btn) {
   block.classList.toggle('open', !isOpen);
   btn.classList.toggle('active', !isOpen);
   btn.textContent = isOpen ? 'BibTeX' : 'Hide BibTeX';
+  btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
 }
 
 function copyBibtex(btn) {
