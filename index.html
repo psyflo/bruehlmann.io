@@ -546,6 +546,36 @@ footer {
   border-top: 1px solid var(--border);
 }
 
+/* === Back to top === */
+#backToTop {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  z-index: 200;
+}
+#backToTop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+#backToTop:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  #backToTop { transition: opacity 0.2s, visibility 0.2s; }
+  #backToTop:hover { transform: none; }
+}
+
 /* === Citation count badge === */
 .cite-count {
   font-size: 0.68rem;
@@ -1674,6 +1704,8 @@ footer {
 
 </main>
 
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
 <footer>
   Florian Brühlmann &middot; bruehlmann.io
   <br>
@@ -1944,6 +1976,11 @@ document.addEventListener('DOMContentLoaded', function() {
   buildHeatmap();
   initScrollAnimations();
   loadCitations();
+
+  var btt = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    btt.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
 
   document.querySelectorAll('.pub-btn[onclick*="toggleBibtex"]').forEach(function(btn) {
     btn.setAttribute('aria-expanded', 'false');
