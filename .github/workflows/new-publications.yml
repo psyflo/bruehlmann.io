@@ -1,0 +1,165 @@
+name: Check for new publications
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'   # every Monday at 08:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check-publications:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch new publications from OpenAlex
+        id: fetch
+        run: |
+          python3 - <<'PYEOF'
+          import json, time, urllib.request, urllib.parse, re, sys, os
+
+          AUTHOR_ID = "A5030759671"   # Florian Brühlmann on OpenAlex
+
+          def openalex_get(url):
+              req = urllib.request.Request(
+                  url,
+                  headers={"User-Agent": "bruehlmann.io/pub-bot (mailto:webmaster@bruehlmann.io)"}
+              )
+              with urllib.request.urlopen(req, timeout=15) as r:
+                  return json.loads(r.read())
+
+          # Collect all works for this author (paginate)
+          works = []
+          cursor = "*"
+          while True:
+              url = (
+                  f"https://api.openalex.org/works"
+                  f"?filter=authorships.author.id:{AUTHOR_ID}"
+                  f"&per-page=50&cursor={urllib.parse.quote(cursor)}"
+                  f"&select=doi,title,authorships,publication_year,type,"
+                  f"primary_location,biblio,open_access"
+              )
+              data = openalex_get(url)
+              works.extend(data.get("results", []))
+              meta = data.get("meta", {})
+              cursor = meta.get("next_cursor")
+              if not cursor:
+                  break
+              time.sleep(0.3)
+
+          # Parse existing DOIs from publications.bib
+          with open("publications.bib") as f:
+              bib_content = f.read()
+
+          existing_dois = set(
+              d.lower().strip().rstrip("}")
+              for d in re.findall(r'doi\s*=\s*\{([^}]+)\}', bib_content, re.IGNORECASE)
+          )
+          print(f"Found {len(existing_dois)} existing DOIs in bib", flush=True)
+
+          def format_authors(authorships):
+              names = []
+              for a in authorships:
+                  display = a.get("author", {}).get("display_name", "")
+                  # Try to get "Last, First" order
+                  parts = display.split()
+                  if len(parts) >= 2:
+                      last = parts[-1]
+                      first = " ".join(parts[:-1])
+                      names.append(f"{last}, {first}")
+                  else:
+                      names.append(display)
+              return " and\n               ".join(names)
+
+          new_entries = []
+          for w in works:
+              raw_doi = (w.get("doi") or "").replace("https://doi.org/", "").lower().strip()
+              if not raw_doi or raw_doi in existing_dois:
+                  continue
+
+              year = w.get("publication_year", "")
+              title = (w.get("title") or "Unknown title").replace("{", "").replace("}", "")
+              authors = format_authors(w.get("authorships", []))
+              wtype = w.get("type", "")
+              loc = w.get("primary_location") or {}
+              source = (loc.get("source") or {})
+              venue = source.get("display_name", "")
+              biblio = w.get("biblio") or {}
+
+              # Build a minimal bib entry
+              slug = re.sub(r'[^a-z0-9]', '', (authors.split(",")[0].lower())) + str(year)
+              title_word = re.sub(r'[^a-z]', '', title.lower().split()[1] if len(title.split()) > 1 else title.lower())
+              key = f"{slug}{title_word[:8]}"
+
+              if wtype in ("journal-article",):
+                  entry = f"""@article{{{key},
+    title   = {{{title}}},
+    author  = {{{authors}}},
+    journal = {{{venue}}},"""
+                  if biblio.get("volume"): entry += f"\n  volume  = {{{biblio['volume']}}},"
+                  if biblio.get("issue"):  entry += f"\n  number  = {{{biblio['issue']}}},"
+                  if biblio.get("first_page"):
+                      last = biblio.get("last_page", "")
+                      pages = f"{biblio['first_page']}--{last}" if last else biblio['first_page']
+                      entry += f"\n  pages   = {{{pages}}},"
+                  entry += f"\n  doi     = {{{raw_doi}}},\n  year    = {{{year}}}\n}}"
+              elif wtype in ("proceedings-article", "book-chapter"):
+                  etype = "inproceedings" if wtype == "proceedings-article" else "incollection"
+                  entry = f"""@{etype}{{{key},
+    title     = {{{title}}},
+    author    = {{{authors}}},
+    booktitle = {{{venue}}},"""
+                  if biblio.get("first_page"):
+                      last = biblio.get("last_page", "")
+                      pages = f"{biblio['first_page']}--{last}" if last else biblio['first_page']
+                      entry += f"\n  pages     = {{{pages}}},"
+                  entry += f"\n  doi       = {{{raw_doi}}},\n  year      = {{{year}}}\n}}"
+              else:
+                  entry = f"""@misc{{{key},
+    title  = {{{title}}},
+    author = {{{authors}}},
+    doi    = {{{raw_doi}}},
+    year   = {{{year}}}
+  }}"""
+
+              new_entries.append((year, entry))
+              print(f"  NEW: {raw_doi}", flush=True)
+
+          if not new_entries:
+              print("No new publications found.")
+              with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+                  f.write("new_count=0\n")
+              sys.exit(0)
+
+          # Sort by year descending and prepend to bib
+          new_entries.sort(key=lambda x: x[0], reverse=True)
+          block = "\n\n".join(e for _, e in new_entries)
+
+          # Insert after the header comment block (before first @)
+          first_at = bib_content.index("@")
+          new_bib = bib_content[:first_at] + block + "\n\n" + bib_content[first_at:]
+
+          with open("publications.bib", "w") as f:
+              f.write(new_bib)
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"new_count={len(new_entries)}\n")
+          print(f"Added {len(new_entries)} new entries.")
+          PYEOF
+
+      - name: Open PR with new publications
+        if: steps.fetch.outputs.new_count != '0'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "feat: add ${{ steps.fetch.outputs.new_count }} new publication(s) from OpenAlex"
+          branch: auto/new-publications
+          title: "New publications detected (${{ steps.fetch.outputs.new_count }})"
+          body: |
+            OpenAlex found **${{ steps.fetch.outputs.new_count }}** publication(s) not yet in `publications.bib`.
+
+            Please review the auto-generated bib entries below, clean up any formatting issues, and merge when ready.
+          labels: publications
+          delete-branch: true
