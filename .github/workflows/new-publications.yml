@@ -95,10 +95,12 @@ jobs:
               key = f"{slug}{title_word[:8]}"
 
               if wtype in ("journal-article",):
-                  entry = f"""@article{{{key},
-    title   = {{{title}}},
-    author  = {{{authors}}},
-    journal = {{{venue}}},"""
+                  entry = (
+                      f"@article{{{key},\n"
+                      f"  title   = {{{title}}},\n"
+                      f"  author  = {{{authors}}},\n"
+                      f"  journal = {{{venue}}},"
+                  )
                   if biblio.get("volume"): entry += f"\n  volume  = {{{biblio['volume']}}},"
                   if biblio.get("issue"):  entry += f"\n  number  = {{{biblio['issue']}}},"
                   if biblio.get("first_page"):
@@ -108,22 +110,26 @@ jobs:
                   entry += f"\n  doi     = {{{raw_doi}}},\n  year    = {{{year}}}\n}}"
               elif wtype in ("proceedings-article", "book-chapter"):
                   etype = "inproceedings" if wtype == "proceedings-article" else "incollection"
-                  entry = f"""@{etype}{{{key},
-    title     = {{{title}}},
-    author    = {{{authors}}},
-    booktitle = {{{venue}}},"""
+                  entry = (
+                      f"@{etype}{{{key},\n"
+                      f"  title     = {{{title}}},\n"
+                      f"  author    = {{{authors}}},\n"
+                      f"  booktitle = {{{venue}}},"
+                  )
                   if biblio.get("first_page"):
                       last = biblio.get("last_page", "")
                       pages = f"{biblio['first_page']}--{last}" if last else biblio['first_page']
                       entry += f"\n  pages     = {{{pages}}},"
                   entry += f"\n  doi       = {{{raw_doi}}},\n  year      = {{{year}}}\n}}"
               else:
-                  entry = f"""@misc{{{key},
-    title  = {{{title}}},
-    author = {{{authors}}},
-    doi    = {{{raw_doi}}},
-    year   = {{{year}}}
-  }}"""
+                  entry = (
+                      f"@misc{{{key},\n"
+                      f"  title  = {{{title}}},\n"
+                      f"  author = {{{authors}}},\n"
+                      f"  doi    = {{{raw_doi}}},\n"
+                      f"  year   = {{{year}}}\n"
+                      f"}}"
+                  )
 
               new_entries.append((year, entry))
               print(f"  NEW: {raw_doi}", flush=True)
