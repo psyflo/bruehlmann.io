@@ -27,7 +27,6 @@ jobs:
             --exclude '^https://formspree\.io/'
             --exclude '^https://www\.linkedin\.com/'
             --exclude '^https://www\.researchgate\.net/'
-            --exclude '^https://bruehlmann\.io'
             --timeout 20
             --max-retries 3
             index.html
