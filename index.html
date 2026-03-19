@@ -623,6 +623,63 @@ footer {
   cursor: default;
 }
 
+/* === Career Timeline === */
+#career { max-width: 680px; }
+.timeline {
+  list-style: none;
+  margin: 1.5rem 0 0 0;
+  padding: 0;
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 88px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.tl-item:last-child { margin-bottom: 0; }
+.tl-year {
+  flex: 0 0 80px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.tl-dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+.tl-body { flex: 1; }
+.tl-body strong {
+  display: block;
+  font-size: 0.925rem;
+  color: var(--text-heading);
+  line-height: 1.4;
+}
+.tl-org {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+  display: block;
+}
+
 /* === Scroll Animations === */
 .fade-in {
   opacity: 0;
@@ -655,6 +712,7 @@ footer {
     <span class="site-name">Florian Brühlmann</span>
     <nav aria-label="Main navigation">
       <a href="#about">About</a>
+      <a href="#career">Career</a>
       <a href="#publications">Publications</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -1706,6 +1764,67 @@ footer {
     </div>
 
   </section>
+
+  <hr class="divider" aria-hidden="true">
+
+  <!-- ====================================================
+       CAREER
+       ==================================================== -->
+  <section id="career" class="fade-in">
+    <h2>Career</h2>
+    <ol class="timeline">
+      <li class="tl-item">
+        <span class="tl-year">2024 &ndash;</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>Data Insights Lead</strong>
+          <span class="tl-org">Industry</span>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-year">2019 &ndash; 2023</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>Head of HCI Research Group</strong>
+          <span class="tl-org">University of Basel</span>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-year">2018 &ndash; 2019</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>Senior Research Associate &amp; Blended Learning Coordinator</strong>
+          <span class="tl-org">University of Applied Sciences FHNW</span>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-year">2016 &ndash; 2019</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>Research Associate &amp; PhD Student, HCI Research Group</strong>
+          <span class="tl-org">University of Basel</span>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-year">2016 &ndash; 2018</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>Statistician</strong>
+          <span class="tl-org">University of Applied Sciences and Arts Northwestern Switzerland FHNW</span>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-year">2014</span>
+        <span class="tl-dot" aria-hidden="true"></span>
+        <div class="tl-body">
+          <strong>User Experience Research Assistant</strong>
+          <span class="tl-org">Google</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="divider" aria-hidden="true">
 
   <!-- ====================================================
        CONTACT
