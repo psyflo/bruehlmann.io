@@ -21,6 +21,7 @@ jobs:
             --verbose
             --no-progress
             --exclude-loopback
+            --base https://bruehlmann.io
             --exclude '^mailto:'
             --exclude '^https://doi\.org/'
             --exclude '^https://formspree\.io/'
